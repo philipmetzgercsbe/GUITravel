@@ -16,10 +16,25 @@
         <Label Name="zweiterNameLbl">Zweiter Name</Label> <TextBox Name="zweiternameTxtbox"></TextBox>
         <Label Name="nachnameLbl">Nachname</Label> 
         <TextBox Name="nachnameTxtbox"></TextBox>
-        <Label Name="nachnameLbl">Nachname</Label>
-        <TextBox Name="nachnameTxtbox"></TextBox>
-        <Label Name="nachnameLbl">Nachname</Label>
-        <TextBox Name="nachnameTxtbox"></TextBox>
+        <Label Name="ortLbl">Ort</Label>
+        <TextBox Name="OrtTxtbox"></TextBox>
+        <Label Name="plzLbl">PLZ</Label>
+        <TextBox Name="plzTxtbox"></TextBox>
+        <Label Name="Telefon">Telefon</Label>
+        <TextBox Name="TelefonTxtbox"></TextBox>
+        <Label Name="mobileLbl">Mobile</Label>
+        <TextBox Name="mobileTxtbox"></TextBox>
+        <Label Name="emailLbl">Email</Label>
+        <TextBox Name="emailTxtbox"></TextBox>
+        <Label Name="webLbl">Website</Label>
+        <TextBox Name="webTxtbox"></TextBox>
+        <Label Name="geburtsdatumLbl">Geburtsdatum</Label>
+        <DatePicker Name="geburtstdatumDtPck"></DatePicker>
+        <Label Name="passnrLbl">PassNr</Label>
+        <TextBox Name="passNrTxtbox"></TextBox>
+        <Label Name="nationalityLbl">Nationality</Label>
+        <TextBox Name="nationalitybTxtbox" MaxLength="2"></TextBox>
+        
 
 
     </Grid>
