@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Security.Cryptography.X509Certificates;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
@@ -23,12 +24,13 @@ namespace Gui_Travel
         public MainWindow()
         {
             InitializeComponent();
-            registrationControl registrationControl = new registrationControl();
-            loginControl loginControl = new loginControl();
-            this.AddChild(loginControl);
+            registrationControl registration = new registrationControl();
+            Hotel hotel = new Hotel();
+            
+
             //If your logged in display Hotels & User Controls
 
-            
+
         }
     }
 }

@@ -33,5 +33,6 @@ namespace Gui_Travel
         public virtual DbSet<Reise> Reises { get; set; }
         public virtual DbSet<Reise_Hotel> Reise_Hotel { get; set; }
         public virtual DbSet<sysdiagram> sysdiagrams { get; set; }
+        public virtual DbSet<GUIUser> GUIUsers { get; set; }
     }
 }

@@ -64,6 +64,9 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="ClassRepository\HotelRepository.cs" />
+    <Compile Include="ClassRepository\KundeRepository.cs" />
+    <Compile Include="ClassRepository\ReiseRepository.cs" />
     <Compile Include="GUITravel.Context.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -78,6 +81,9 @@
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>GUITravel.edmx</DependentUpon>
+    </Compile>
+    <Compile Include="GUIUser.cs">
+      <DependentUpon>GUITravel.tt</DependentUpon>
     </Compile>
     <Compile Include="HotelBild.cs">
       <DependentUpon>GUITravel.tt</DependentUpon>

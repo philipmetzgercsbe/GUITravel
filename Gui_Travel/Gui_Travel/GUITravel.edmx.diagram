@@ -21,6 +21,8 @@
         <AssociationConnector Association="M120Model.FK_Kunde_Reise_Reise" ManuallyRouted="false" />
         <AssociationConnector Association="M120Model.FK_Reise_Land" ManuallyRouted="false" />
         <AssociationConnector Association="M120Model.FK_Reise_Hotel_Reise" ManuallyRouted="false" />
+        <EntityTypeShape EntityType="M120Model.GUIUser" Width="1.5" PointX="7.375" PointY="3.875" />
+        <AssociationConnector Association="M120Model.GUIUserFK" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

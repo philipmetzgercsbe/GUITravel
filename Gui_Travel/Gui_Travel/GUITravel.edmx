@@ -4,7 +4,15 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-      <Schema Namespace="M120Model.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+    <Schema Namespace="M120Model.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="GUIUser">
+          <Key>
+            <PropertyRef Name="UserID" />
+          </Key>
+          <Property Name="UserID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="username" Type="nvarchar" MaxLength="256" Nullable="false" />
+          <Property Name="password" Type="varchar" MaxLength="256" Nullable="false" />
+        </EntityType>
         <EntityType Name="Hotel">
           <Key>
             <PropertyRef Name="HotelID" />
@@ -50,6 +58,7 @@
           <Property Name="Geburtsdatum" Type="date" Nullable="false" />
           <Property Name="PassNr" Type="varchar" MaxLength="50" Nullable="false" />
           <Property Name="Nationalitaet" Type="bigint" Nullable="false" />
+          <Property Name="GUIUserFK" Type="int" />
         </EntityType>
         <EntityType Name="Kunde_Reise">
           <Key>
@@ -194,7 +203,20 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="GUIUserFK">
+          <End Role="GUIUser" Type="Self.GUIUser" Multiplicity="0..1" />
+          <End Role="Kunde" Type="Self.Kunde" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="GUIUser">
+              <PropertyRef Name="UserID" />
+            </Principal>
+            <Dependent Role="Kunde">
+              <PropertyRef Name="GUIUserFK" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <EntityContainer Name="M120ModelStoreContainer">
+          <EntitySet Name="GUIUser" EntityType="Self.GUIUser" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Hotel" EntityType="Self.Hotel" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="HotelBild" EntityType="Self.HotelBild" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Kunde" EntityType="Self.Kunde" Schema="dbo" store:Type="Tables" />
@@ -235,9 +257,12 @@
             <End Role="Land" EntitySet="Land" />
             <End Role="Reise" EntitySet="Reise" />
           </AssociationSet>
+          <AssociationSet Name="GUIUserFK" Association="Self.GUIUserFK">
+            <End Role="GUIUser" EntitySet="GUIUser" />
+            <End Role="Kunde" EntitySet="Kunde" />
+          </AssociationSet>
         </EntityContainer>
-      </Schema>
-    </edmx:StorageModels>
+      </Schema></edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="M120Model" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
@@ -250,15 +275,17 @@
           <Property Name="Ort" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="Land" Type="Int64" Nullable="false" />
           <Property Name="Sterne" Type="Byte" Nullable="false" />
-          <Property Name="Manager" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="manager" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="AnzahlZimmer" Type="Int16" Nullable="false" />
           <Property Name="TagesPreis" Type="Decimal" Precision="18" Scale="2" Nullable="false" />
           <Property Name="Telefon" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="Email" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="email" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="Web" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
           <NavigationProperty Name="Land1" Relationship="Self.FK_Hotel_Land" FromRole="Hotel" ToRole="Land" />
           <NavigationProperty Name="HotelBilds" Relationship="Self.FK_HotelBild_Hotel" FromRole="Hotel" ToRole="HotelBild" />
           <NavigationProperty Name="Reise_Hotel" Relationship="Self.FK_Reise_Hotel_Hotel" FromRole="Hotel" ToRole="Reise_Hotel" />
+          <Property Name="Manager" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Email" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="true" />
         </EntityType>
         <EntityType Name="HotelBild">
           <Key>
@@ -285,13 +312,16 @@
           <Property Name="Ort" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="Telefon" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="Mobile" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="Email" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="email" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="Web" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="Geburtsdatum" Type="DateTime" Nullable="false" Precision="0" />
           <Property Name="PassNr" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="Nationalitaet" Type="Int64" Nullable="false" />
           <NavigationProperty Name="Land" Relationship="Self.FK_Kunde_Land" FromRole="Kunde" ToRole="Land" />
           <NavigationProperty Name="Kunde_Reise" Relationship="Self.FK_Kunde_Reise_Kunde" FromRole="Kunde" ToRole="Kunde_Reise" />
+          <Property Name="Email" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="GUIUserFK" Type="Int32" />
+          <NavigationProperty Name="GUIUser" Relationship="M120Model.GUIUserFK" FromRole="Kunde" ToRole="GUIUser" />
         </EntityType>
         <EntityType Name="Kunde_Reise">
           <Key>
@@ -487,7 +517,33 @@
             <End Role="Reise" EntitySet="Reises" />
             <End Role="Reise_Hotel" EntitySet="Reise_Hotel" />
           </AssociationSet>
+          <EntitySet Name="GUIUsers" EntityType="M120Model.GUIUser" />
+          <AssociationSet Name="GUIUserFK" Association="M120Model.GUIUserFK">
+            <End Role="GUIUser" EntitySet="GUIUsers" />
+            <End Role="Kunde" EntitySet="Kundes" />
+          </AssociationSet>
         </EntityContainer>
+        <EntityType Name="GUIUser">
+          <Key>
+            <PropertyRef Name="UserID" />
+          </Key>
+          <Property Name="UserID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="username" Type="String" Nullable="false" MaxLength="256" FixedLength="false" Unicode="true" />
+          <Property Name="password" Type="String" Nullable="false" MaxLength="256" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="Kundes" Relationship="M120Model.GUIUserFK" FromRole="GUIUser" ToRole="Kunde" />
+        </EntityType>
+        <Association Name="GUIUserFK">
+          <End Type="M120Model.GUIUser" Role="GUIUser" Multiplicity="0..1" />
+          <End Type="M120Model.Kunde" Role="Kunde" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="GUIUser">
+              <PropertyRef Name="UserID" />
+            </Principal>
+            <Dependent Role="Kunde">
+              <PropertyRef Name="GUIUserFK" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -497,16 +553,16 @@
           <EntitySetMapping Name="Hotels">
             <EntityTypeMapping TypeName="M120Model.Hotel">
               <MappingFragment StoreEntitySet="Hotel">
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="Manager" ColumnName="Manager" />
                 <ScalarProperty Name="HotelID" ColumnName="HotelID" />
                 <ScalarProperty Name="Name" ColumnName="Name" />
                 <ScalarProperty Name="Ort" ColumnName="Ort" />
                 <ScalarProperty Name="Land" ColumnName="Land" />
                 <ScalarProperty Name="Sterne" ColumnName="Sterne" />
-                <ScalarProperty Name="Manager" ColumnName="Manager" />
                 <ScalarProperty Name="AnzahlZimmer" ColumnName="AnzahlZimmer" />
                 <ScalarProperty Name="TagesPreis" ColumnName="TagesPreis" />
                 <ScalarProperty Name="Telefon" ColumnName="Telefon" />
-                <ScalarProperty Name="Email" ColumnName="Email" />
                 <ScalarProperty Name="Web" ColumnName="Web" />
               </MappingFragment>
             </EntityTypeMapping>
@@ -525,6 +581,8 @@
           <EntitySetMapping Name="Kundes">
             <EntityTypeMapping TypeName="M120Model.Kunde">
               <MappingFragment StoreEntitySet="Kunde">
+                <ScalarProperty Name="GUIUserFK" ColumnName="GUIUserFK" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
                 <ScalarProperty Name="KundeID" ColumnName="KundeID" />
                 <ScalarProperty Name="Anrede" ColumnName="Anrede" />
                 <ScalarProperty Name="Vorname" ColumnName="Vorname" />
@@ -535,7 +593,6 @@
                 <ScalarProperty Name="Ort" ColumnName="Ort" />
                 <ScalarProperty Name="Telefon" ColumnName="Telefon" />
                 <ScalarProperty Name="Mobile" ColumnName="Mobile" />
-                <ScalarProperty Name="Email" ColumnName="Email" />
                 <ScalarProperty Name="Web" ColumnName="Web" />
                 <ScalarProperty Name="Geburtsdatum" ColumnName="Geburtsdatum" />
                 <ScalarProperty Name="PassNr" ColumnName="PassNr" />
@@ -592,6 +649,15 @@
                 <ScalarProperty Name="diagram_id" ColumnName="diagram_id" />
                 <ScalarProperty Name="version" ColumnName="version" />
                 <ScalarProperty Name="definition" ColumnName="definition" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="GUIUsers">
+            <EntityTypeMapping TypeName="M120Model.GUIUser">
+              <MappingFragment StoreEntitySet="GUIUser">
+                <ScalarProperty Name="password" ColumnName="password" />
+                <ScalarProperty Name="username" ColumnName="username" />
+                <ScalarProperty Name="UserID" ColumnName="UserID" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

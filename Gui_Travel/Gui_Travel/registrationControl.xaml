@@ -7,35 +7,35 @@
              mc:Ignorable="d" 
              d:DesignHeight="450" d:DesignWidth="800">
     <Grid>
-        <Label Name="anredeLbl"></Label>
-        <ComboBox Name="anredeComboBo">
-            <ComboBoxItem Name="anredeComboxHerr">Herr</ComboBoxItem>
-            <ComboBoxItem Name="anredeComboxFrau">Frau</ComboBoxItem>
-        </ComboBox>
-        <Label Name="vornameLbl">Vorname</Label><TextBox Name="vornameTxtbox"></TextBox>
-        <Label Name="zweiterNameLbl">Zweiter Name</Label> <TextBox Name="zweiternameTxtbox"></TextBox>
-        <Label Name="nachnameLbl">Nachname</Label> 
-        <TextBox Name="nachnameTxtbox"></TextBox>
+        <Label Name="AnredeLbl">Anrede</Label>
+            <ComboBox Name="AnredeComboBo">
+                <ComboBoxItem Name="AnredeComboxHerr">Herr</ComboBoxItem>
+                <ComboBoxItem Name="AnredeComboxFrau">Frau</ComboBoxItem>
+            </ComboBox>
+        <Label Name="VornameLbl">Vorname</Label>
+            <TextBox Name="VornameTxtbox"></TextBox>
+        <Label Name="ZweiterNameLbl">Zweiter Name</Label>
+            <TextBox Name="ZweiternameTxtbox"></TextBox>
+        <Label Name="NachnameLbl">Nachname</Label> 
+            <TextBox Name="NachnameTxtbox"></TextBox>
         <Label Name="ortLbl">Ort</Label>
-        <TextBox Name="OrtTxtbox"></TextBox>
-        <Label Name="plzLbl">PLZ</Label>
-        <TextBox Name="plzTxtbox"></TextBox>
+            <TextBox Name="OrtTxtbox"></TextBox>
+        <Label Name="PlzLbl">PLZ</Label>
+            <TextBox Name="plzTxtbox"></TextBox>
         <Label Name="Telefon">Telefon</Label>
-        <TextBox Name="TelefonTxtbox"></TextBox>
-        <Label Name="mobileLbl">Mobile</Label>
-        <TextBox Name="mobileTxtbox"></TextBox>
-        <Label Name="emailLbl">Email</Label>
-        <TextBox Name="emailTxtbox"></TextBox>
-        <Label Name="webLbl">Website</Label>
-        <TextBox Name="webTxtbox"></TextBox>
-        <Label Name="geburtsdatumLbl">Geburtsdatum</Label>
-        <DatePicker Name="geburtstdatumDtPck"></DatePicker>
-        <Label Name="passnrLbl">PassNr</Label>
-        <TextBox Name="passNrTxtbox"></TextBox>
-        <Label Name="nationalityLbl">Nationality</Label>
-        <TextBox Name="nationalitybTxtbox" MaxLength="2"></TextBox>
-        
-
+            <TextBox Name="TelefonTxtbox"></TextBox>
+        <Label Name="MobileLbl">Mobile</Label>
+            <TextBox Name="MobileTxtbox"></TextBox>
+        <Label Name="EmailLbl">Email</Label>
+            <TextBox Name="EmailTxtbox"></TextBox>
+        <Label Name="WebLbl">Website</Label>
+            <TextBox Name="WebTxtbox"></TextBox>
+        <Label Name="GeburtsdatumLbl">Geburtsdatum</Label>
+            <DatePicker Name="GeburtstdatumDtPck"></DatePicker>
+        <Label Name="PassnrLbl">PassNr</Label>
+            <TextBox Name="PassNrTxtbox"></TextBox>
+        <Label Name="NationalityLbl">Nationality</Label>
+            <TextBox Name="NationalitybTxtbox" MaxLength="2"></TextBox>
 
     </Grid>
 </UserControl>
