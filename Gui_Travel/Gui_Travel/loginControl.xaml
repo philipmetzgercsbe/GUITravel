@@ -8,14 +8,22 @@
              d:DesignHeight="450" d:DesignWidth="800">
     <Grid>
 
-        <Label Name="usnLbl" Content="Username"></Label>
-        <TextBox Name="UsnTxtbox" Text="Your Name" ></TextBox>
-        <Label Name="pwLbl" Content="Password"></Label>
-        <PasswordBox Name="PasswordBox" PasswordChar="*" MaxLength="10"></PasswordBox>
+        <StackPanel>
+            <StackPanel Orientation="Horizontal">
+            <Label Name="usnLbl" Content="Username"></Label>
+                <TextBox HorizontalAlignment="Center"  Name="UsnTxtbox" Text="Your Name" Width="200" VerticalAlignment="Center" ></TextBox>
+            </StackPanel>
+            <StackPanel Orientation="Horizontal">
+            <Label Name="pwLbl" Content="Password"></Label>
+                <PasswordBox Name="PasswordBox" PasswordChar="*" MaxLength="10" Width="200" VerticalAlignment="Center"></PasswordBox>
+            </StackPanel>
+        
         <TextBlock Name="notRegisteredTxtBlock">
-            <Hyperlink NavigateUri="registrationControl.xaml">Not Registered yet?</Hyperlink>
-        </TextBlock>
-            <Button Name="lgnButton" Content ="Login"> </Button>
-            
+                   <Hyperlink NavigateUri="registrationControl.xaml">Not Registered yet?</Hyperlink>
+               </TextBlock>
+               <Button Name="lgnButton" Content ="Login"></Button>
+        </StackPanel>
+
+
     </Grid>
 </UserControl>

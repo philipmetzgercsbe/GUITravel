@@ -13,6 +13,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using Gui_Travel.ClassRepository;
 
 namespace Gui_Travel
 {
@@ -26,6 +27,8 @@ namespace Gui_Travel
             InitializeComponent();
             registrationControl registration = new registrationControl();
             Hotel hotel = new Hotel();
+            KundeRepository kunde = new KundeRepository();
+            kunde.addKunde(KundeRepository.Anrede.Herr,"Tarek","","Stauffer","13",4500,"Bern","+41 131 13 13 ","+41 594 73 73","tarek.stauffer@email.com",DateTime.Now,"13","CH");
             
 
             //If your logged in display Hotels & User Controls

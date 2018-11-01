@@ -17,15 +17,17 @@ namespace Gui_Travel.ClassRepository
         //TODO: Implement pw hash --> store in Dictionary<GUIUser,Hash>
         public static Kunde kunde; 
         public static M120Entities M120Entities;
+        public GUIUserRepository User = new GUIUserRepository();
         private List<Land> CountryList = new List<Land>();
 
         public void addKunde(Anrede anrede, string firstname, string secondname, string lastname, string streetNr,
             short plz, string place, string phone, string mobile, string email, DateTime birthDate,
-            string passNr, string nationality)
+            string passNr, string nationality, string username, string password)
         {
             kunde = new Kunde();
             getCountries();
             setAttributes(anrede, firstname, secondname, lastname, streetNr, plz, place, phone, mobile, email, birthDate, passNr, nationality);
+            User.addUser(username,password);
             M120Entities.Kundes.Add(kunde);
             M120Entities.SaveChanges();
         }
@@ -68,10 +70,11 @@ namespace Gui_Travel.ClassRepository
 
         public void editKunde(Kunde kunde,Anrede anrede, string firstname, string secondname, string lastname, string streetNr,
             short plz, string place, string phone, string mobile, string email, DateTime birthDate,
-            string passNr, string nationality)
+            string passNr, string nationality,string username, string password)
         {
             kunde = M120Entities.Kundes.Find(kunde);
             setAttributes(anrede, firstname, secondname, lastname, streetNr, plz, place, phone, mobile, email, birthDate, passNr, nationality,kunde);
+            User.editUser(username,password);
             M120Entities.SaveChanges();
 
         }
