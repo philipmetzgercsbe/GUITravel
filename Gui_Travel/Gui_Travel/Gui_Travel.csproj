@@ -71,6 +71,9 @@
     <Compile Include="ClassRepository\HotelRepository.cs" />
     <Compile Include="ClassRepository\KundeRepository.cs" />
     <Compile Include="ClassRepository\ReiseRepository.cs" />
+    <Compile Include="CustomControls\MainControl.xaml.cs">
+      <DependentUpon>MainControl.xaml</DependentUpon>
+    </Compile>
     <Compile Include="GUITravel.Context.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -113,10 +116,14 @@
     <Compile Include="Hotel.cs">
       <DependentUpon>GUITravel.tt</DependentUpon>
     </Compile>
-    <Compile Include="registrationControl.xaml.cs">
+    <Compile Include="CustomControls\registrationControl.xaml.cs">
       <DependentUpon>registrationControl.xaml</DependentUpon>
     </Compile>
-    <Page Include="loginControl.xaml">
+    <Page Include="CustomControls\loginControl.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="CustomControls\MainControl.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -128,14 +135,14 @@
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="loginControl.xaml.cs">
+    <Compile Include="CustomControls\loginControl.xaml.cs">
       <DependentUpon>loginControl.xaml</DependentUpon>
     </Compile>
     <Compile Include="MainWindow.xaml.cs">
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
-    <Page Include="registrationControl.xaml">
+    <Page Include="CustomControls\registrationControl.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

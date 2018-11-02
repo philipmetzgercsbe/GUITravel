@@ -26,14 +26,33 @@ namespace Gui_Travel
         {
             InitializeComponent();
             registrationControl registration = new registrationControl();
-            Hotel hotel = new Hotel();
-            KundeRepository kunde = new KundeRepository();
-            kunde.addKunde(KundeRepository.Anrede.Herr,"Tarek","","Stauffer","13",4500,"Bern","+41 131 13 13 ","+41 594 73 73","tarek.stauffer@email.com",DateTime.Now,"13","CH");
-            
+            DataContext = this;
+            DataContext = registration;
 
             //If your logged in display Hotels & User Controls
 
 
+        }
+
+
+        public static IEnumerable<T> FindVisualChildren<T>(DependencyObject depObj) where T : DependencyObject
+        {
+            if (depObj != null)
+            {
+                for (int i = 0; i < VisualTreeHelper.GetChildrenCount(depObj); i++)
+                {
+                    DependencyObject child = VisualTreeHelper.GetChild(depObj, i);
+                    if (child != null && child is T)
+                    {
+                        yield return (T)child;
+                    }
+
+                    foreach (T childOfChild in FindVisualChildren<T>(child))
+                    {
+                        yield return childOfChild;
+                    }
+                }
+            }
         }
     }
 }

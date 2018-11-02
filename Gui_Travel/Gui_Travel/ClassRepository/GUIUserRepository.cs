@@ -4,6 +4,7 @@ using System.Linq;
 using System.Security.Cryptography;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows;
 using System.Windows.Documents;
 
 namespace Gui_Travel.ClassRepository
@@ -38,6 +39,7 @@ namespace Gui_Travel.ClassRepository
             var toEdit = M120Entities.GUIUsers.Find(user) ?? throw new ArgumentNullException("User doesn't exist");
             if (toEdit.username.Equals(M120Entities.GUIUsers.Find(username)))
             {
+                
                 //Write Message usn already exists
             }
             toEdit.username = username;
@@ -52,10 +54,17 @@ namespace Gui_Travel.ClassRepository
 
         }
 
-        private bool Verifiy(string password,string username)
+        public bool Verify(string password,string username)
         {
-            UserHash.TryGetValue(username, out var keyhash);
-            BCrypt.Net.BCrypt.Verify(password, keyhash);
+            
+            if (UserHash.TryGetValue(username, out var keyhash))
+            {
+                BCrypt.Net.BCrypt.Verify(password, keyhash);
+                return true;
+            }
+
+            return false;
+
         }
 
         private static string CreateSalt()

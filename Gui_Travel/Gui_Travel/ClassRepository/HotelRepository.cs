@@ -9,7 +9,7 @@ namespace Gui_Travel.ClassRepository
 {
     class HotelRepository
     {
-        //TODO: Create Base Class --> OOP 
+       
         M120Entities m120Entities = new M120Entities();
         public static Hotel Hotel;
         public List<Land> CountryList = new List<Land>();
@@ -67,6 +67,17 @@ namespace Gui_Travel.ClassRepository
             m120Entities.SaveChanges();
         }
 
+        public void removeAll()
+        {
+            var Hotels = m120Entities.Hotels.ToList();
+
+            foreach (var h in Hotels)
+            {
+                m120Entities.Hotels.Remove(h);
+
+            }
+
+        }
        
     }
 }

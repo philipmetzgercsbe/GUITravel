@@ -13,14 +13,14 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace Gui_Travel
+namespace Gui_Travel.CustomControls
 {
     /// <summary>
-    /// Interaction logic for registrationControl.xaml
+    /// Interaction logic for MainControl.xaml
     /// </summary>
-    public partial class registrationControl : UserControl
+    public partial class MainControl : UserControl
     {
-        public registrationControl()
+        public MainControl()
         {
             InitializeComponent();
         }

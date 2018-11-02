@@ -11,14 +11,14 @@ namespace Gui_Travel.ClassRepository
     {
         public enum Anrede
         {
+            
             Herr,Dame
         }
-        // TODO: Change addUser/edituser to reflect new Db structure 
-        //TODO: Implement pw hash --> store in Dictionary<GUIUser,Hash>
+       
         public static Kunde kunde; 
         public static M120Entities M120Entities;
         public GUIUserRepository User = new GUIUserRepository();
-        private List<Land> CountryList = new List<Land>();
+        public List<Land> CountryList = new List<Land>();
 
         public void addKunde(Anrede anrede, string firstname, string secondname, string lastname, string streetNr,
             short plz, string place, string phone, string mobile, string email, DateTime birthDate,
@@ -74,9 +74,19 @@ namespace Gui_Travel.ClassRepository
         {
             kunde = M120Entities.Kundes.Find(kunde);
             setAttributes(anrede, firstname, secondname, lastname, streetNr, plz, place, phone, mobile, email, birthDate, passNr, nationality,kunde);
-            User.editUser(username,password);
+            User.editUser(M120Entities.GUIUsers.Find(kunde.GUIUserFK),username,password);
             M120Entities.SaveChanges();
 
+        }
+
+        public void removeAll()
+        {
+            var Kunden = M120Entities.Kundes.ToList();
+
+            foreach (var k in Kunden)
+            {
+                M120Entities.Kundes.Remove(k);
+            }
         }
     }
 }
