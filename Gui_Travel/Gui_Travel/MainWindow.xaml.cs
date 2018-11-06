@@ -22,12 +22,14 @@ namespace Gui_Travel
     /// </summary>
     public partial class MainWindow : Window
     {
+        public static MainWindow Window;
         public MainWindow()
         {
             InitializeComponent();
-            registrationControl registration = new registrationControl();
-            DataContext = this;
-            DataContext = registration;
+            Window = this;
+            loginControl login = new loginControl();
+            
+            DataContext = login;
 
             //If your logged in display Hotels & User Controls
 

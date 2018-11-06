@@ -1,51 +1,51 @@
-﻿<UserControl x:Class="Gui_Travel.registrationControl"
+﻿<UserControl x:Class="Gui_Travel.CustomControls.UserInformation"
              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
-             xmlns:local="clr-namespace:Gui_Travel"
+             xmlns:local="clr-namespace:Gui_Travel.CustomControls"
              mc:Ignorable="d" 
              d:DesignHeight="450" d:DesignWidth="800">
     <Grid>
         <StackPanel>
-        <Label Name="SalutationLbl">Anrede</Label>
+            <Label Name="SalutationLbl">Anrede
+            </Label>
             <ComboBox Name="SalutationComboBox">
                 <ComboBoxItem Name="SalutationComboxHerr">Herr</ComboBoxItem>
                 <ComboBoxItem Name="SalutationComboxFrau">Frau</ComboBoxItem>
             </ComboBox>
-        <Label Name="FirstnameLbl">Vorname</Label>
+            <Label Name="FirstnameLbl">Vorname</Label>
             <TextBox Name="FirstnameTxtbox"></TextBox>
-        <Label Name="SecondnameLbl">Zweiter Name</Label>
+            <Label Name="SecondnameLbl">Zweiter Name</Label>
             <TextBox Name="SecondnameTxtbox"></TextBox>
-        <Label Name="LastnameLbl">Nachname</Label> 
+            <Label Name="LastnameLbl">Nachname</Label>
             <TextBox Name="LastnameTxtbox"></TextBox>
-        <Label Name="StreetNrLbl">Ort</Label>
+            <Label Name="StreetNrLbl">Ort</Label>
             <TextBox Name="SteetNrTxtbox"></TextBox>
-        <Label Name="PlaceLbl">Ort</Label>
+            <Label Name="PlaceLbl">Ort</Label>
             <TextBox Name="PlaceTxtbox"></TextBox>
-        <Label Name="ZIPLbl">PLZ</Label>
+            <Label Name="ZIPLbl">PLZ</Label>
             <TextBox Name="ZIPTxtbox"></TextBox>
-        <Label Name="PhoneLbl">Telefon</Label>
+            <Label Name="PhoneLbl">Telefon</Label>
             <TextBox Name="PhoneTxtbox"></TextBox>
-        <Label Name="MobileLbl">Mobile</Label>
+            <Label Name="MobileLbl">Mobile</Label>
             <TextBox Name="MobileTxtbox"></TextBox>
-        <Label Name="EmailLbl">Email</Label>
+            <Label Name="EmailLbl">Email</Label>
             <TextBox Name="EmailTxtbox"></TextBox>
-        <Label Name="WebLbl">Website</Label>
+            <Label Name="WebLbl">Website</Label>
             <TextBox Name="WebTxtbox"></TextBox>
-        <Label Name="BirthdateLbl">Geburtsdatum</Label>
+            <Label Name="BirthdateLbl">Geburtsdatum</Label>
             <DatePicker Name="BirthdateDtPck"></DatePicker>
-        <Label Name="PassNrLbl">PassNr</Label>
+            <Label Name="PassNrLbl">PassNr</Label>
             <TextBox Name="PassNrTxtbox"></TextBox>
-        <Label Name="NationalityLbl">Nationality</Label>
+            <Label Name="NationalityLbl">Nationality</Label>
             <TextBox Name="NationalitybTxtbox" MaxLength="2"></TextBox>
-        <Label Name="usernameLbl">Username</Label>
+            <Label Name="usernameLbl">Username</Label>
             <TextBox Name="usnTxtBox" ></TextBox>
-        <Label Name="passwordLabel">Password</Label>
+            <Label Name="passwordLabel">Password</Label>
             <PasswordBox Name="passwordBox"></PasswordBox>
-            <Button VerticalAlignment="Center" HorizontalAlignment="Center" Content="Register" Name="registerBtn"  Click="Register"></Button>
+            <Button VerticalAlignment="Center" HorizontalAlignment="Center" Content="Save" Name="registerBtn"  Click="SaveInformation"></Button>
         </StackPanel>
-        
-
+            
     </Grid>
 </UserControl>

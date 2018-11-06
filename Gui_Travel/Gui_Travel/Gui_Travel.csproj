@@ -47,6 +47,10 @@
     <Reference Include="System" />
     <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Data" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Drawing.Common, Version=4.0.0.1, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Drawing.Common.4.5.1\lib\net461\System.Drawing.Common.dll</HintPath>
+    </Reference>
     <Reference Include="System.Runtime.Serialization" />
     <Reference Include="System.Security" />
     <Reference Include="System.Xml" />
@@ -68,11 +72,18 @@
       <SubType>Designer</SubType>
     </ApplicationDefinition>
     <Compile Include="ClassRepository\GUIUserRepository.cs" />
+    <Compile Include="ClassRepository\HotelImageRepository.cs" />
     <Compile Include="ClassRepository\HotelRepository.cs" />
     <Compile Include="ClassRepository\KundeRepository.cs" />
     <Compile Include="ClassRepository\ReiseRepository.cs" />
-    <Compile Include="CustomControls\MainControl.xaml.cs">
-      <DependentUpon>MainControl.xaml</DependentUpon>
+    <Compile Include="CustomControls\PurchaseForm.xaml.cs">
+      <DependentUpon>PurchaseForm.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="CustomControls\tabControl.xaml.cs">
+      <DependentUpon>tabControl.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="CustomControls\UserInformation.xaml.cs">
+      <DependentUpon>UserInformation.xaml</DependentUpon>
     </Compile>
     <Compile Include="GUITravel.Context.cs">
       <AutoGen>True</AutoGen>
@@ -123,7 +134,15 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="CustomControls\MainControl.xaml">
+    <Page Include="CustomControls\PurchaseForm.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="CustomControls\tabControl.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="CustomControls\UserInformation.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

@@ -1,18 +1,8 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Linq;
-using System.Security.Cryptography.X509Certificates;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
 using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
 using Gui_Travel.ClassRepository;
 
 namespace Gui_Travel
@@ -22,6 +12,9 @@ namespace Gui_Travel
     /// </summary>
     public partial class loginControl : UserControl
     {
+        public static Kunde Kunde;
+        
+        public static M120Entities M120Entities = new M120Entities();
         public loginControl()
         {
 
@@ -31,17 +24,26 @@ namespace Gui_Travel
 
             //get DB Connection
             // usn == db.kunde && password = password ? show new Control : Display txtBox && pwBox as red
-            //Create mockup / prototype thanks mr ammerschuber
+         
 
 
         }
 
         private void Login(object sender, RoutedEventArgs e)
         {
+            
             GUIUserRepository usercmds = new GUIUserRepository();
+           
             string usn = UsnTxtbox.Text;
             string pw = PasswordBox.Password;
-            usercmds.Verify(pw, usn) ? //Create Method to load || hide this  MainMenu : Display Fields as red with subtext pw or usn false
+            
+            if (usercmds.Verify(usn, pw))
+            {
+                int kundeID = M120Entities.GUIUsers.FirstOrDefault(x => x.username == usn).UserID;
+                Kunde = M120Entities.Kundes.Find(kundeID);
+                UsnTxtbox.Background = new SolidColorBrush(Colors.Green);
+                PasswordBox.Background = new SolidColorBrush(Colors.Green);
+            }
 
         }
 
@@ -49,7 +51,7 @@ namespace Gui_Travel
         {
            
                 TextBox tb = (TextBox)sender;
-                tb.Text = string.Empty;
+                tb.Text = String.Empty;
                 tb.GotFocus -= UsnTxtboxFocus;
             
         }
@@ -57,13 +59,21 @@ namespace Gui_Travel
         private void PasswordBoxFocus(object sender, RoutedEventArgs e)
         {
             PasswordBox tb = (PasswordBox)sender;
-            tb.Password = string.Empty;
+            tb.Password = String.Empty;
             tb.GotFocus -= PasswordBoxFocus;
         }
 
         private void notRegistered(object sender, RoutedEventArgs e)
         {
+            if (MainWindow.Window.DataContext.Equals(this))
+            {
+                
+                
+            }
             
+
+            //Get Parent remove this
+
             //Remove this from Panel and load registration 
         }
     }

@@ -33,8 +33,8 @@ namespace Gui_Travel
             Kunde newKunde = new Kunde();
             GUIUser assocUser = new GUIUser();
             string userSalutation = Enum.GetName(typeof(KundeRepository.Anrede), this.SalutationComboBox.SelectedIndex);
-            KundeRepository.Anrede mySalutation;
-            Enum.GetValues(Enum.TryParse(userSalutation, out mySalutation));
+  
+            Enum.GetValues(Enum.TryParse(userSalutation, out var mySalutation));
             kundeRepository.addKunde(mySalutation,FirstnameTxtbox.Text,SecondnameTxtbox.Text,LastnameTxtbox.Text, SteetNrTxtbox.Text,Convert.ToInt16(ZIPTxtbox.Text),PlaceTxtbox.Text,PhoneTxtbox.Text,MobileTxtbox.Text,EmailTxtbox.Text,(DateTime) BirthdateDtPck.SelectedDate,PassNrTxtbox.Text,NationalitybTxtbox.Text,usnTxtBox.Text, passwordBox.Password);
             
             

@@ -25,6 +25,8 @@ namespace Gui_Travel.ClassRepository
         private List<Land> getCountries()
         {
             return CountriesList = M120Entities.Lands.ToList();
+            
+
         }
 
         public void editTravel(Reise reise,string country, DateTime start, DateTime end, decimal price, bool staffed,

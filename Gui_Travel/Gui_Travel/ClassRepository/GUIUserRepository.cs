@@ -2,17 +2,12 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Security.Cryptography;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows;
-using System.Windows.Documents;
 
 namespace Gui_Travel.ClassRepository
 {
     class GUIUserRepository
     {
         public static GUIUser GuiUser;
-        private RNGCryptoServiceProvider CryptoServProv = new RNGCryptoServiceProvider();
         private Dictionary<string,string> UserHash = new Dictionary<string, string>();
         public static M120Entities M120Entities;
         
@@ -37,11 +32,6 @@ namespace Gui_Travel.ClassRepository
         {
             var salt = CreateSalt();
             var toEdit = M120Entities.GUIUsers.Find(user) ?? throw new ArgumentNullException("User doesn't exist");
-            if (toEdit.username.Equals(M120Entities.GUIUsers.Find(username)))
-            {
-                
-                //Write Message usn already exists
-            }
             toEdit.username = username;
             toEdit.password = Hash(password, salt);
             M120Entities.SaveChanges();
@@ -67,6 +57,7 @@ namespace Gui_Travel.ClassRepository
 
         }
 
+        
         private static string CreateSalt()
         {
             var Salt = new byte[DateTime.Now.Millisecond].ToString();
