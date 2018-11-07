@@ -63,14 +63,15 @@ namespace Gui_Travel
             tb.GotFocus -= PasswordBoxFocus;
         }
 
-        private void notRegistered(object sender, RoutedEventArgs e)
+        private void NotRegistered(object sender, RoutedEventArgs e)
         {
-            if (MainWindow.Window.DataContext.Equals(this))
+            if (MainWindow.Window.ContentGrid.Children.Contains(this))
             {
-                
-                
+                MainWindow.Window.ContentGrid.Children.Remove(this);
+               
             }
-            
+            registrationControl registration = new registrationControl();
+            MainWindow.Window.ContentGrid.Children.Add(registration);
 
             //Get Parent remove this
 

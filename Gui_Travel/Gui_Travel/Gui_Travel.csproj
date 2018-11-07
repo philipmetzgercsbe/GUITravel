@@ -211,9 +211,13 @@
       <DependentUpon>GUITravel.edmx</DependentUpon>
       <LastGenOutput>GUITravel.cs</LastGenOutput>
     </Content>
+    <None Include="Properties\Windows_Settings_app_icon.png" />
   </ItemGroup>
   <ItemGroup>
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Resources\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

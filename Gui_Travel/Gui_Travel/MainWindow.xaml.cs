@@ -28,7 +28,7 @@ namespace Gui_Travel
             InitializeComponent();
             Window = this;
             loginControl login = new loginControl();
-            
+            ContentGrid.Children.Add(login);
             DataContext = login;
 
             //If your logged in display Hotels & User Controls
@@ -36,7 +36,13 @@ namespace Gui_Travel
 
         }
 
-
+        /// <summary>
+        /// Finds all visual Children in Form with the given Parameters useable for lists etc
+        /// Source:https://stackoverflow.com/questions/974598/find-all-controls-in-wpf-window-by-type
+        /// </summary>
+        /// <typeparam name="T"></typeparam>
+        /// <param name="depObj"></param>
+        /// <returns></returns>
         public static IEnumerable<T> FindVisualChildren<T>(DependencyObject depObj) where T : DependencyObject
         {
             if (depObj != null)

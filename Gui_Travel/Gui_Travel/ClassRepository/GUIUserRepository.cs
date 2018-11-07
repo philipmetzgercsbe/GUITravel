@@ -9,7 +9,7 @@ namespace Gui_Travel.ClassRepository
     {
         public static GUIUser GuiUser;
         private Dictionary<string,string> UserHash = new Dictionary<string, string>();
-        public static M120Entities M120Entities;
+        public static M120Entities M120Entities  = new M120Entities();
         
         public void addUser(string username, string password)
         {
@@ -18,6 +18,7 @@ namespace Gui_Travel.ClassRepository
             GuiUser.username = username;
             GuiUser.password = Hash(password,salt);
             UserHash.Add(username,salt);
+            M120Entities.SaveChanges();
             M120Entities.GUIUsers.Add(GuiUser);
             M120Entities.SaveChanges();
 

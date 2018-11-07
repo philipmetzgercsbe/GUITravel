@@ -6,7 +6,7 @@
         xmlns:local="clr-namespace:Gui_Travel"
         mc:Ignorable="d"
         Title="GUI Travel" Height="1074" Width="768">
-    <Grid/>
+    <Grid Name="ContentGrid"/>
 
 
 

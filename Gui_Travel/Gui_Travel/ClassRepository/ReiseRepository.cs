@@ -8,7 +8,7 @@ namespace Gui_Travel.ClassRepository
 {
     class ReiseRepository
     {
-        public static M120Entities M120Entities;
+        public static M120Entities M120Entities = new M120Entities();
         public static Reise Reise;
         public List<Land> CountriesList = new List<Land>();
 
@@ -47,6 +47,7 @@ namespace Gui_Travel.ClassRepository
             Reise.Preis = price;
             Reise.Leitung = staffed;
             Reise.NameLeitung = nameofstaff;
+            M120Entities.SaveChanges();
         }
 
         private void removeAll()
@@ -56,9 +57,15 @@ namespace Gui_Travel.ClassRepository
             foreach (var t in Travels)
             {
                 M120Entities.Reises.Remove(t);
+                M120Entities.SaveChanges();
 
             }
         }
 
+        public void removeTravel(Reise travel)
+        {
+            M120Entities.Reises.Remove(travel);
+            M120Entities.SaveChanges();
+        }
     }
 }

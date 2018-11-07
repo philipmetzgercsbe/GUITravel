@@ -9,17 +9,17 @@
     <Grid>
 
         <StackPanel>
-            <StackPanel Orientation="Horizontal">
-            <Label Name="usnLbl" Content="Username"></Label>
+            <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
+            <Label Width="200" Name="usnLbl" Content="Username"></Label>
                 <TextBox HorizontalAlignment="Center"  Name="UsnTxtbox" Text="Your Name" Width="200" VerticalAlignment="Center" GotFocus="UsnTxtboxFocus" ></TextBox>
             </StackPanel>
-            <StackPanel Orientation="Horizontal">
-            <Label Name="pwLbl" Content="Password"></Label>
+            <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
+                <Label Width="200" Name="pwLbl" Content="Password"></Label>
                 <PasswordBox Name="PasswordBox" PasswordChar="*" MaxLength="10" Width="200" VerticalAlignment="Center" GotFocus="PasswordBoxFocus"></PasswordBox>
             </StackPanel>
         
-        <TextBlock Name="notRegisteredTxtBlock">
-                   <Hyperlink NavigateUri="registrationControl.xaml" Click="notRegistered">Not Registered yet?</Hyperlink>
+        <TextBlock Name="notRegisteredTxtBlock" HorizontalAlignment="Center">
+                   <Hyperlink NavigateUri="registrationControl.xaml" Click="NotRegistered">Not Registered yet?</Hyperlink>
                </TextBlock>
                <Button Name="lgnButton" Content ="Login" Click="Login"></Button>
         </StackPanel>

@@ -28,16 +28,19 @@ namespace Gui_Travel
 
         private void Register(object sender, RoutedEventArgs e)
         {
-            GUIUserRepository userRepository = new GUIUserRepository();
+            
             KundeRepository kundeRepository = new KundeRepository();
-            Kunde newKunde = new Kunde();
-            GUIUser assocUser = new GUIUser();
-            string userSalutation = Enum.GetName(typeof(KundeRepository.Anrede), this.SalutationComboBox.SelectedIndex);
-  
-            Enum.GetValues(Enum.TryParse(userSalutation, out var mySalutation));
+            
+            string userSalutation = Enum.GetName(typeof(KundeRepository.Anrede), SalutationComboBox.SelectedValue);
+
+            Enum.TryParse<KundeRepository.Anrede>(userSalutation, out var mySalutation);
             kundeRepository.addKunde(mySalutation,FirstnameTxtbox.Text,SecondnameTxtbox.Text,LastnameTxtbox.Text, SteetNrTxtbox.Text,Convert.ToInt16(ZIPTxtbox.Text),PlaceTxtbox.Text,PhoneTxtbox.Text,MobileTxtbox.Text,EmailTxtbox.Text,(DateTime) BirthdateDtPck.SelectedDate,PassNrTxtbox.Text,NationalitybTxtbox.Text,usnTxtBox.Text, passwordBox.Password);
-            
-            
+            MainWindow.Window.DataContext = null;
+            loginControl login = new loginControl();
+            MainWindow.Window.ContentGrid.Children.Remove(this);
+            MainWindow.Window.ContentGrid.Children.Add(login);
+
+
         }
 
 

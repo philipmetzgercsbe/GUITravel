@@ -7,43 +7,75 @@
              mc:Ignorable="d" 
              d:DesignHeight="450" d:DesignWidth="800">
     <Grid>
-        <StackPanel>
-        <Label Name="SalutationLbl">Anrede</Label>
+        <StackPanel Orientation="Vertical" >
+            <StackPanel>
+            <Label Name="SalutationLbl">Anrede</Label>
             <ComboBox Name="SalutationComboBox">
                 <ComboBoxItem Name="SalutationComboxHerr">Herr</ComboBoxItem>
                 <ComboBoxItem Name="SalutationComboxFrau">Frau</ComboBoxItem>
             </ComboBox>
-        <Label Name="FirstnameLbl">Vorname</Label>
+            </StackPanel>
+            <StackPanel>
+            <Label Name="FirstnameLbl">Vorname</Label>
             <TextBox Name="FirstnameTxtbox"></TextBox>
-        <Label Name="SecondnameLbl">Zweiter Name</Label>
+            </StackPanel>
+            <StackPanel>
+            <Label Name="SecondnameLbl">Zweiter Name</Label>
             <TextBox Name="SecondnameTxtbox"></TextBox>
-        <Label Name="LastnameLbl">Nachname</Label> 
+            </StackPanel>
+            <StackPanel>
+            <Label Name="LastnameLbl">Nachname</Label> 
             <TextBox Name="LastnameTxtbox"></TextBox>
-        <Label Name="StreetNrLbl">Ort</Label>
-            <TextBox Name="SteetNrTxtbox"></TextBox>
-        <Label Name="PlaceLbl">Ort</Label>
+            </StackPanel>
+            <StackPanel>
+            <Label Name="StreetNrLbl">StrasseNr</Label>
+            <TextBox Name="SteetNrTxtbox" MaxLength="3"></TextBox>
+            </StackPanel>
+            <StackPanel>
+            <Label Name="PlaceLbl">Ort</Label>
             <TextBox Name="PlaceTxtbox"></TextBox>
-        <Label Name="ZIPLbl">PLZ</Label>
+            </StackPanel>
+            <StackPanel>
+            <Label Name="ZIPLbl">PLZ</Label>
             <TextBox Name="ZIPTxtbox"></TextBox>
-        <Label Name="PhoneLbl">Telefon</Label>
+            </StackPanel>
+            <StackPanel>
+            <Label Name="PhoneLbl">Telefon</Label>
             <TextBox Name="PhoneTxtbox"></TextBox>
-        <Label Name="MobileLbl">Mobile</Label>
+            </StackPanel>
+            <StackPanel>
+            <Label Name="MobileLbl">Mobile</Label>
             <TextBox Name="MobileTxtbox"></TextBox>
-        <Label Name="EmailLbl">Email</Label>
+            </StackPanel>
+            <StackPanel>
+            <Label Name="EmailLbl">Email</Label>
             <TextBox Name="EmailTxtbox"></TextBox>
-        <Label Name="WebLbl">Website</Label>
+            </StackPanel>
+            <StackPanel>
+            <Label Name="WebLbl">Website</Label>
             <TextBox Name="WebTxtbox"></TextBox>
-        <Label Name="BirthdateLbl">Geburtsdatum</Label>
+            </StackPanel>
+            <StackPanel>
+            <Label Name="BirthdateLbl">Geburtsdatum</Label>
             <DatePicker Name="BirthdateDtPck"></DatePicker>
-        <Label Name="PassNrLbl">PassNr</Label>
+            </StackPanel>
+            <StackPanel>
+            <Label Name="PassNrLbl">PassNr</Label>
             <TextBox Name="PassNrTxtbox"></TextBox>
-        <Label Name="NationalityLbl">Nationality</Label>
-            <TextBox Name="NationalitybTxtbox" MaxLength="2"></TextBox>
-        <Label Name="usernameLbl">Username</Label>
+            </StackPanel>
+            <StackPanel>
+            <Label Name="NationalityLbl">Nationality</Label>
+            <TextBox Name="NationalitybTxtbox" ToolTip="Z.B CH" MaxLength="2"></TextBox>
+            </StackPanel>
+            <StackPanel>
+            <Label Name="usernameLbl">Username</Label>
             <TextBox Name="usnTxtBox" ></TextBox>
-        <Label Name="passwordLabel">Password</Label>
+            </StackPanel>
+            <StackPanel>
+            <Label Name="passwordLabel">Password</Label>
             <PasswordBox Name="passwordBox"></PasswordBox>
-            <Button VerticalAlignment="Center" HorizontalAlignment="Center" Content="Register" Name="registerBtn"  Click="Register"></Button>
+            <Button  Content="Register" Name="registerBtn"  Click="Register"></Button>
+            </StackPanel>
         </StackPanel>
         
 

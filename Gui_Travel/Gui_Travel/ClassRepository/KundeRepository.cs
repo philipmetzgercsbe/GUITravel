@@ -16,7 +16,7 @@ namespace Gui_Travel.ClassRepository
         }
        
         public static Kunde kunde; 
-        public static M120Entities M120Entities;
+        public static M120Entities M120Entities = new M120Entities();
         public GUIUserRepository User = new GUIUserRepository();
         public List<Land> CountryList = new List<Land>();
 
@@ -28,6 +28,7 @@ namespace Gui_Travel.ClassRepository
             getCountries();
             setAttributes(anrede, firstname, secondname, lastname, streetNr, plz, place, phone, mobile, email, birthDate, passNr, nationality);
             User.addUser(username,password);
+            M120Entities.SaveChanges();
             M120Entities.Kundes.Add(kunde);
             M120Entities.SaveChanges();
         }
@@ -86,7 +87,9 @@ namespace Gui_Travel.ClassRepository
             foreach (var k in Kunden)
             {
                 M120Entities.Kundes.Remove(k);
+                M120Entities.SaveChanges();
             }
+           
         }
     }
 }

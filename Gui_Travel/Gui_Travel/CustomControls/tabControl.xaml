@@ -9,14 +9,17 @@
     <Grid>
         <TabControl HorizontalAlignment="Left"  Margin="10,10,10,10" VerticalAlignment="Top" Height="1074" Width="768" >
             <TabItem Header="You" MouseDown="LoadUserContent">
-                <Grid Background="#FFE5E5E5"/>
+                <Grid Background="#FFE5E5E5">
+                    
+                </Grid>
+
             </TabItem>
             <TabItem Header="Hotels" MouseDown="LoadHotels">
                 <StackPanel Name="HotelStackPanel"></StackPanel>
-                
+
             </TabItem>
             <TabItem Header="Travels" MouseDown="LoadTravels">
-               <StackPanel Name="TravelsStackPanel"></StackPanel>
+                <StackPanel Name="TravelsStackPanel"></StackPanel>
             </TabItem>
         </TabControl>
 
