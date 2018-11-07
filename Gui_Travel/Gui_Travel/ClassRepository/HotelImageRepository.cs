@@ -10,7 +10,12 @@ namespace Gui_Travel.ClassRepository
         public static M120Entities M120Entities = new M120Entities();
         public static HotelBild HotelBild = new HotelBild();
 
-        
+        public void addImage(Image image, string description)
+        {
+            byte[] bytestoSave= SaveImageToByte(image, description);
+            //AddHotel calls addImage and they get added with the Hotelname combined
+            M120Entities.SaveChanges();
+        }
 
         public Image ByteArraytoImage(byte[] imgBytes)
         {
@@ -23,6 +28,7 @@ namespace Gui_Travel.ClassRepository
             MemoryStream memStream = new MemoryStream();
             image.Save(memStream, System.Drawing.Imaging.ImageFormat.Gif);
             AddAttributes(desc, memStream);
+            M120Entities.SaveChanges();
             return memStream.ToArray();
         }
 

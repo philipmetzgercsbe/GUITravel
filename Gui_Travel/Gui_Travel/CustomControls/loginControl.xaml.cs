@@ -44,6 +44,10 @@ namespace Gui_Travel
                 UsnTxtbox.Background = new SolidColorBrush(Colors.Green);
                 PasswordBox.Background = new SolidColorBrush(Colors.Green);
             }
+            TabControl MainTab = new TabControl();
+            MainWindow.Window.ContentGrid.Children.Remove(this);
+            MainWindow.Window.ContentGrid.Children.Add(MainTab);
+
 
         }
 
@@ -72,7 +76,7 @@ namespace Gui_Travel
             }
             registrationControl registration = new registrationControl();
             MainWindow.Window.ContentGrid.Children.Add(registration);
-
+            //registration reloads login and from here on we go on
             //Get Parent remove this
 
             //Remove this from Panel and load registration 
