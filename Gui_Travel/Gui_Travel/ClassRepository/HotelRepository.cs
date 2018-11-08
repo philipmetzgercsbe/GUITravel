@@ -13,14 +13,16 @@ namespace Gui_Travel.ClassRepository
         M120Entities m120Entities = new M120Entities();
         public static Hotel Hotel;
         public List<Land> CountryList = new List<Land>();
+        private HotelImageRepository hotelImageControl = new HotelImageRepository();
         
        
         public void addHotel(string name, string ort, string land, double rating, string manager, short rooms,
-            decimal priceperDay, string phone, string email, string website)
+            decimal priceperDay, string phone, string email, string website, HotelBild hotelImage, string description)
         {
             Hotel = new Hotel();
             setAttributes(name, ort, land, manager, rooms, priceperDay, phone, email, website);
             m120Entities.Hotels.Add(Hotel);
+            hotelImageControl.addImage(hotelImageControl.ByteArraytoImage(hotelImage.Bild),description);
             m120Entities.SaveChanges();
 
 

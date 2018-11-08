@@ -22,9 +22,11 @@ namespace Gui_Travel
     public partial class registrationControl : UserControl
     {
         public List<TextBox> RequiredForms;
+        
         public registrationControl()
         {
             InitializeComponent();
+            LoadCountryShortName();
         }
 
         private void Register(object sender, RoutedEventArgs e)
@@ -35,11 +37,13 @@ namespace Gui_Travel
                 return;
             }
             KundeRepository kundeRepository = new KundeRepository();
-            
-            string userSalutation = Enum.GetName(typeof(KundeRepository.Anrede), SalutationComboBox.SelectedValue);
 
-            Enum.TryParse<KundeRepository.Anrede>(userSalutation, out var mySalutation);
-            kundeRepository.addKunde(mySalutation,FirstnameTxtbox.Text,SecondnameTxtbox.Text,LastnameTxtbox.Text, SteetNrTxtbox.Text,Convert.ToInt16(ZIPTxtbox.Text),PlaceTxtbox.Text,PhoneTxtbox.Text,MobileTxtbox.Text,EmailTxtbox.Text,(DateTime) BirthdateDtPck.SelectedDate,PassNrTxtbox.Text,NationalitybTxtbox.Text,usnTxtBox.Text, passwordBox.Password);
+            
+            string usersalututation = Enum.GetName(typeof(KundeRepository.Anrede), SalutationComboBox.SelectedValue);
+            Enum.TryParse<KundeRepository.Anrede>(usersalututation, out var mySalutation);
+            //Find out how to parse Combo
+
+            kundeRepository.addKunde(mySalutation,FirstnameTxtbox_.Text,SecondnameTxtbox.Text,LastnameTxtbox_.Text, SteetNrTxtbox_.Text,Convert.ToInt16(ZIPTxtbox_.Text),PlaceTxtbox_.Text,PhoneTxtbox.Text,MobileTxtbox.Text,EmailTxtbox_.Text,(DateTime) BirthdateDtPck.SelectedDate,PassNrTxtbox.Text,NationalityCombobox_.SelectedValue.ToString(),usnTxtBox_.Text, passwordBox.Password);
             MainWindow.Window.AddMessageBox("You were successfully registered", "Success");
             MainWindow.Window.DataContext = null;
             loginControl login = new loginControl();
@@ -55,11 +59,12 @@ namespace Gui_Travel
             var Panels = MainWindow.FindVisualChildren<StackPanel>(this).ToList();
             foreach (var txtbox in RequiredForms)
             {
-                if (txtbox.Name.Contains("*") && txtbox.Text.Contains("") && passwordBox.Password.Contains(""))
+                if (txtbox.Name.Contains("_") && txtbox.Text.Contains("") && passwordBox.Password.Contains("") && SalutationComboBox.SelectedItem.Equals(null))
                 {
                     
                     txtbox.Background = new SolidColorBrush(Colors.Firebrick);
                     passwordBox.Background = new SolidColorBrush(Colors.Firebrick);
+                    SalutationComboBox.Background = new SolidColorBrush(Colors.Firebrick);
                     foreach (var panel in Panels)
                     {
                         if (panel.Name == "MainPanel")
@@ -81,8 +86,20 @@ namespace Gui_Travel
             return true;
 
         }
-        
 
+        private void LoadCountryShortName()
+        {
+            List<Land> CountriesList;
+            M120Entities m120Entities = new M120Entities();
+            CountriesList = m120Entities.Lands.ToList();
+            foreach (var country in CountriesList)
+            {
+                NationalityCombobox_.Items.Add(country.Kurzname);
+
+
+            }
+            
+        }
 
         
     }

@@ -4,8 +4,10 @@ using System.Windows;
 using System.Windows.Forms;
 using System.Windows.Media;
 using Button = System.Windows.Controls.Button;
+using WinFButton = System.Windows.Forms.Button;
 using Color = System.Drawing.Color;
 using Label = System.Windows.Controls.Label;
+using WinFLabel = System.Windows.Forms.Label;
 
 namespace Gui_Travel
 {
@@ -26,9 +28,9 @@ namespace Gui_Travel
             Window = this;
             loginControl login = new loginControl();
             ContentGrid.Children.Add(login);
-            DataContext = login;
+           
 
-            //If your logged in display Hotels & User Controls
+            
 
 
         }
@@ -62,28 +64,28 @@ namespace Gui_Travel
 
         public void AddMessageBox(string message, string caption , Enum type = null)
         {
-            //Find out how to add Button and Label to prompt
+            
             Form prompt = new Form();
             prompt.Width = 500;
             prompt.Height = 100;
             prompt.Text = caption;
-            Label textLabel = new Label() { Margin = new Thickness(50,50,50,50), Content = message };
-            prompt.BackColor = Color.Green; 
-            Button SuccessBtn = new Button() { Content = "Ok", Margin  = new Thickness(250, 70,250,10), Width = 100 };
+            WinFLabel textLabel = new WinFLabel() { Top = 50,Left =50, Text = message };
+            prompt.BackColor = Color.Green;
+            WinFButton SuccessBtn = new WinFButton() { Text = "Ok", Left = 250,Top = 70, Width = 100 };
             SuccessBtn.Click += (sender, e) => { prompt.Close(); };
             prompt.Controls.Add(SuccessBtn);
             if (type != null && type.Equals(Type.Error))
             {
                 prompt.BackColor = Color.Red;
-                var errorButton = new Button() {Content = "Try again" ,Margin = new Thickness(250, 70, 250, 10), Width = 100 };
+                var errorButton = new WinFButton() {Text = "Try again", Left =250, Top = 70, Width = 100 };
                 errorButton.Click += (sender, e) => prompt.Close();
                 prompt.Controls.Add(errorButton);
             }
             else if (type != null && type.Equals(Type.Exit))
             {
-                textLabel.Content = "Do you want to quit GuiTravel ?";
-                var yesButton = new Button(){ Content = "Yes", Margin = new Thickness(100, 70, 10, 10), Width = 100 };
-                var NoButton = new Button() {Content = "No", Margin = new Thickness(400, 70, 10, 10), Width = 100};
+                textLabel.Text = "Do you want to quit GuiTravel ?";
+                WinFButton yesButton = new WinFButton(){ Text = "Yes", Top = 100, Left = 70, Width = 100 };
+                WinFButton NoButton = new WinFButton() { Text = "No", Top = 400, Left = 70,  Width = 100};
                 NoButton.Click += (sender, e) => prompt.Close();
                 yesButton.Click += (sender, e) => { MainWindow.Window.Close(); prompt.Close(); };
                 prompt.Controls.Add(yesButton);

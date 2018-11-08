@@ -8,12 +8,12 @@ namespace Gui_Travel.ClassRepository
     class HotelImageRepository
     {
         public static M120Entities M120Entities = new M120Entities();
-        public static HotelBild HotelBild = new HotelBild();
+        public static HotelBild HotelBild;
 
         public void addImage(Image image, string description)
         {
-            byte[] bytestoSave= SaveImageToByte(image, description);
-            //AddHotel calls addImage and they get added with the Hotelname combined
+            SaveImageToByte(image, description);
+            
             M120Entities.SaveChanges();
         }
 
@@ -34,8 +34,11 @@ namespace Gui_Travel.ClassRepository
 
         private static void AddAttributes(string desc, MemoryStream m1)
         {
+            HotelBild = new HotelBild();
             HotelBild.Bild = m1.ToArray();
             HotelBild.Beschreibung = desc;
+            M120Entities.SaveChanges();
+            M120Entities.HotelBilds.Add(HotelBild);
             M120Entities.SaveChanges();
         }
 

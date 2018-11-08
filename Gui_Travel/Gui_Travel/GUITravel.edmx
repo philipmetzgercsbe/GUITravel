@@ -5,7 +5,7 @@
     <!-- SSDL content -->
     <edmx:StorageModels>
     <Schema Namespace="M120Model.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
-        <EntityType Name="GUIUser">
+        <EntityType Name="GUIUsers">
           <Key>
             <PropertyRef Name="UserID" />
           </Key>
@@ -13,7 +13,17 @@
           <Property Name="username" Type="nvarchar" MaxLength="256" Nullable="false" />
           <Property Name="password" Type="varchar" MaxLength="256" Nullable="false" />
         </EntityType>
-        <EntityType Name="Hotel">
+        <EntityType Name="HotelBilds">
+          <Key>
+            <PropertyRef Name="BildID" />
+          </Key>
+          <Property Name="BildID" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="HotelID" Type="bigint" Nullable="false" />
+          <Property Name="Reihenfolge" Type="int" Nullable="false" />
+          <Property Name="Bild" Type="varbinary(max)" />
+          <Property Name="Beschreibung" Type="varchar" MaxLength="100" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Hotels">
           <Key>
             <PropertyRef Name="HotelID" />
           </Key>
@@ -22,43 +32,12 @@
           <Property Name="Ort" Type="varchar" MaxLength="50" Nullable="false" />
           <Property Name="Land" Type="bigint" Nullable="false" />
           <Property Name="Sterne" Type="tinyint" Nullable="false" />
-          <Property Name="Manager" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="manager" Type="varchar" MaxLength="50" Nullable="false" />
           <Property Name="AnzahlZimmer" Type="smallint" Nullable="false" />
           <Property Name="TagesPreis" Type="decimal" Precision="18" Scale="2" Nullable="false" />
           <Property Name="Telefon" Type="nvarchar" MaxLength="50" Nullable="false" />
-          <Property Name="Email" Type="nvarchar" MaxLength="100" Nullable="false" />
+          <Property Name="email" Type="nvarchar" MaxLength="100" Nullable="false" />
           <Property Name="Web" Type="nvarchar" MaxLength="100" Nullable="false" />
-        </EntityType>
-        <EntityType Name="HotelBild">
-          <Key>
-            <PropertyRef Name="BildID" />
-          </Key>
-          <Property Name="BildID" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="HotelID" Type="bigint" Nullable="false" />
-          <Property Name="Reihenfolge" Type="int" Nullable="false" />
-          <Property Name="Bild" Type="image" />
-          <Property Name="Beschreibung" Type="varchar" MaxLength="100" Nullable="false" />
-        </EntityType>
-        <EntityType Name="Kunde">
-          <Key>
-            <PropertyRef Name="KundeID" />
-          </Key>
-          <Property Name="KundeID" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="Anrede" Type="varchar" MaxLength="50" Nullable="false" />
-          <Property Name="Vorname" Type="varchar" MaxLength="50" Nullable="false" />
-          <Property Name="Name" Type="varchar" MaxLength="50" Nullable="false" />
-          <Property Name="NameZusatz" Type="varchar" MaxLength="50" Nullable="false" />
-          <Property Name="StrasseNr" Type="varchar" MaxLength="100" Nullable="false" />
-          <Property Name="PLZ" Type="smallint" Nullable="false" />
-          <Property Name="Ort" Type="varchar" MaxLength="50" Nullable="false" />
-          <Property Name="Telefon" Type="varchar" MaxLength="50" Nullable="false" />
-          <Property Name="Mobile" Type="varchar" MaxLength="50" Nullable="false" />
-          <Property Name="Email" Type="varchar" MaxLength="100" Nullable="false" />
-          <Property Name="Web" Type="varchar" MaxLength="100" Nullable="false" />
-          <Property Name="Geburtsdatum" Type="date" Nullable="false" />
-          <Property Name="PassNr" Type="varchar" MaxLength="50" Nullable="false" />
-          <Property Name="Nationalitaet" Type="bigint" Nullable="false" />
-          <Property Name="GUIUserFK" Type="int" />
         </EntityType>
         <EntityType Name="Kunde_Reise">
           <Key>
@@ -68,26 +47,14 @@
           <Property Name="Kunde" Type="bigint" Nullable="false" />
           <Property Name="Reise" Type="bigint" Nullable="false" />
         </EntityType>
-        <EntityType Name="Land">
+        <EntityType Name="Lands">
           <Key>
             <PropertyRef Name="LandID" />
           </Key>
           <Property Name="LandID" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="Name" Type="varchar" MaxLength="50" Nullable="false" />
           <Property Name="Kurzname" Type="char" MaxLength="3" Nullable="false" />
-          <Property Name="Flagge" Type="image" />
-        </EntityType>
-        <EntityType Name="Reise">
-          <Key>
-            <PropertyRef Name="ReiseID" />
-          </Key>
-          <Property Name="ReiseID" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="Land" Type="bigint" Nullable="false" />
-          <Property Name="Start" Type="date" Nullable="false" />
-          <Property Name="Ende" Type="date" Nullable="false" />
-          <Property Name="Preis" Type="decimal" Precision="18" Scale="2" Nullable="false" />
-          <Property Name="Leitung" Type="bit" Nullable="false" />
-          <Property Name="NameLeitung" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Flagge" Type="varbinary(max)" />
         </EntityType>
         <EntityType Name="Reise_Hotel">
           <Key>
@@ -97,6 +64,30 @@
           <Property Name="Reise" Type="bigint" Nullable="false" />
           <Property Name="Hotel" Type="bigint" Nullable="false" />
         </EntityType>
+        <EntityType Name="Reises">
+          <Key>
+            <PropertyRef Name="ReiseID" />
+          </Key>
+          <Property Name="ReiseID" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Land" Type="bigint" Nullable="false" />
+          <Property Name="Start" Type="datetime" Nullable="false" />
+          <Property Name="Ende" Type="datetime" Nullable="false" />
+          <Property Name="Preis" Type="decimal" Precision="18" Scale="2" Nullable="false" />
+          <Property Name="Leitung" Type="bit" Nullable="false" />
+          <Property Name="NameLeitung" Type="varchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+      <EntityType Name="Kundes">
+        <Key>
+          <PropertyRef Name="KundeID" />
+        </Key>
+        <Property Name="KundeID" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+        <Property Name="Vorname" Type="bigint" Nullable="false" />
+        <Property Name="NameZusatz" Type="datetime" Nullable="false" />
+        <Property Name="Name" Type="datetime" Nullable="false" />
+        <Property Name="Preis" Type="decimal" Precision="18" Scale="2" Nullable="false" />
+        <Property Name="Leitung" Type="bit" Nullable="false" />
+        <Property Name="NameLeitung" Type="varchar" MaxLength="50" Nullable="false" />
+      </EntityType>
         <EntityType Name="sysdiagrams">
           <Key>
             <PropertyRef Name="diagram_id" />
@@ -108,58 +99,34 @@
           <Property Name="definition" Type="varbinary(max)" />
         </EntityType>
         <Association Name="FK_Hotel_Land">
-          <End Role="Land" Type="Self.Land" Multiplicity="1" />
-          <End Role="Hotel" Type="Self.Hotel" Multiplicity="*" />
+          <End Role="Lands" Type="Self.Lands" Multiplicity="1" />
+          <End Role="Hotels" Type="Self.Hotels" Multiplicity="*" />
           <ReferentialConstraint>
-            <Principal Role="Land">
+            <Principal Role="Lands">
               <PropertyRef Name="LandID" />
             </Principal>
-            <Dependent Role="Hotel">
+            <Dependent Role="Hotels">
               <PropertyRef Name="Land" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_HotelBild_Hotel">
-          <End Role="Hotel" Type="Self.Hotel" Multiplicity="1" />
-          <End Role="HotelBild" Type="Self.HotelBild" Multiplicity="*" />
+          <End Role="Hotels" Type="Self.Hotels" Multiplicity="1" />
+          <End Role="HotelBilds" Type="Self.HotelBilds" Multiplicity="*" />
           <ReferentialConstraint>
-            <Principal Role="Hotel">
+            <Principal Role="Hotels">
               <PropertyRef Name="HotelID" />
             </Principal>
-            <Dependent Role="HotelBild">
+            <Dependent Role="HotelBilds">
               <PropertyRef Name="HotelID" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_Kunde_Land">
-          <End Role="Land" Type="Self.Land" Multiplicity="1" />
-          <End Role="Kunde" Type="Self.Kunde" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Land">
-              <PropertyRef Name="LandID" />
-            </Principal>
-            <Dependent Role="Kunde">
-              <PropertyRef Name="Nationalitaet" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_Kunde_Reise_Kunde">
-          <End Role="Kunde" Type="Self.Kunde" Multiplicity="1" />
-          <End Role="Kunde_Reise" Type="Self.Kunde_Reise" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Kunde">
-              <PropertyRef Name="KundeID" />
-            </Principal>
-            <Dependent Role="Kunde_Reise">
-              <PropertyRef Name="Kunde" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_Kunde_Reise_Reise">
-          <End Role="Reise" Type="Self.Reise" Multiplicity="1" />
+          <End Role="Reises" Type="Self.Reises" Multiplicity="1" />
           <End Role="Kunde_Reise" Type="Self.Kunde_Reise" Multiplicity="*" />
           <ReferentialConstraint>
-            <Principal Role="Reise">
+            <Principal Role="Reises">
               <PropertyRef Name="ReiseID" />
             </Principal>
             <Dependent Role="Kunde_Reise">
@@ -168,10 +135,10 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_Reise_Hotel_Hotel">
-          <End Role="Hotel" Type="Self.Hotel" Multiplicity="1" />
+          <End Role="Hotels" Type="Self.Hotels" Multiplicity="1" />
           <End Role="Reise_Hotel" Type="Self.Reise_Hotel" Multiplicity="*" />
           <ReferentialConstraint>
-            <Principal Role="Hotel">
+            <Principal Role="Hotels">
               <PropertyRef Name="HotelID" />
             </Principal>
             <Dependent Role="Reise_Hotel">
@@ -180,10 +147,10 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_Reise_Hotel_Reise">
-          <End Role="Reise" Type="Self.Reise" Multiplicity="1" />
+          <End Role="Reises" Type="Self.Reises" Multiplicity="1" />
           <End Role="Reise_Hotel" Type="Self.Reise_Hotel" Multiplicity="*" />
           <ReferentialConstraint>
-            <Principal Role="Reise">
+            <Principal Role="Reises">
               <PropertyRef Name="ReiseID" />
             </Principal>
             <Dependent Role="Reise_Hotel">
@@ -192,74 +159,50 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_Reise_Land">
-          <End Role="Land" Type="Self.Land" Multiplicity="1" />
-          <End Role="Reise" Type="Self.Reise" Multiplicity="*" />
+          <End Role="Lands" Type="Self.Lands" Multiplicity="1" />
+          <End Role="Reises" Type="Self.Reises" Multiplicity="*" />
           <ReferentialConstraint>
-            <Principal Role="Land">
+            <Principal Role="Lands">
               <PropertyRef Name="LandID" />
             </Principal>
-            <Dependent Role="Reise">
+            <Dependent Role="Reises">
               <PropertyRef Name="Land" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="GUIUserFK">
-          <End Role="GUIUser" Type="Self.GUIUser" Multiplicity="0..1" />
-          <End Role="Kunde" Type="Self.Kunde" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="GUIUser">
-              <PropertyRef Name="UserID" />
-            </Principal>
-            <Dependent Role="Kunde">
-              <PropertyRef Name="GUIUserFK" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
         <EntityContainer Name="M120ModelStoreContainer">
-          <EntitySet Name="GUIUser" EntityType="Self.GUIUser" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="Hotel" EntityType="Self.Hotel" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="HotelBild" EntityType="Self.HotelBild" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="Kunde" EntityType="Self.Kunde" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="GUIUsers" EntityType="Self.GUIUsers" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="HotelBilds" EntityType="Self.HotelBilds" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Kundes" EntityType="Self.Kundes" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Hotels" EntityType="Self.Hotels" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Kunde_Reise" EntityType="Self.Kunde_Reise" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="Land" EntityType="Self.Land" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="Reise" EntityType="Self.Reise" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Lands" EntityType="Self.Lands" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Reise_Hotel" EntityType="Self.Reise_Hotel" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Reises" EntityType="Self.Reises" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
           <AssociationSet Name="FK_Hotel_Land" Association="Self.FK_Hotel_Land">
-            <End Role="Land" EntitySet="Land" />
-            <End Role="Hotel" EntitySet="Hotel" />
+            <End Role="Lands" EntitySet="Lands" />
+            <End Role="Hotels" EntitySet="Hotels" />
           </AssociationSet>
           <AssociationSet Name="FK_HotelBild_Hotel" Association="Self.FK_HotelBild_Hotel">
-            <End Role="Hotel" EntitySet="Hotel" />
-            <End Role="HotelBild" EntitySet="HotelBild" />
-          </AssociationSet>
-          <AssociationSet Name="FK_Kunde_Land" Association="Self.FK_Kunde_Land">
-            <End Role="Land" EntitySet="Land" />
-            <End Role="Kunde" EntitySet="Kunde" />
-          </AssociationSet>
-          <AssociationSet Name="FK_Kunde_Reise_Kunde" Association="Self.FK_Kunde_Reise_Kunde">
-            <End Role="Kunde" EntitySet="Kunde" />
-            <End Role="Kunde_Reise" EntitySet="Kunde_Reise" />
+            <End Role="Hotels" EntitySet="Hotels" />
+            <End Role="HotelBilds" EntitySet="HotelBilds" />
           </AssociationSet>
           <AssociationSet Name="FK_Kunde_Reise_Reise" Association="Self.FK_Kunde_Reise_Reise">
-            <End Role="Reise" EntitySet="Reise" />
+            <End Role="Reises" EntitySet="Reises" />
             <End Role="Kunde_Reise" EntitySet="Kunde_Reise" />
           </AssociationSet>
           <AssociationSet Name="FK_Reise_Hotel_Hotel" Association="Self.FK_Reise_Hotel_Hotel">
-            <End Role="Hotel" EntitySet="Hotel" />
+            <End Role="Hotels" EntitySet="Hotels" />
             <End Role="Reise_Hotel" EntitySet="Reise_Hotel" />
           </AssociationSet>
           <AssociationSet Name="FK_Reise_Hotel_Reise" Association="Self.FK_Reise_Hotel_Reise">
-            <End Role="Reise" EntitySet="Reise" />
+            <End Role="Reises" EntitySet="Reises" />
             <End Role="Reise_Hotel" EntitySet="Reise_Hotel" />
           </AssociationSet>
           <AssociationSet Name="FK_Reise_Land" Association="Self.FK_Reise_Land">
-            <End Role="Land" EntitySet="Land" />
-            <End Role="Reise" EntitySet="Reise" />
-          </AssociationSet>
-          <AssociationSet Name="GUIUserFK" Association="Self.GUIUserFK">
-            <End Role="GUIUser" EntitySet="GUIUser" />
-            <End Role="Kunde" EntitySet="Kunde" />
+            <End Role="Lands" EntitySet="Lands" />
+            <End Role="Reises" EntitySet="Reises" />
           </AssociationSet>
         </EntityContainer>
       </Schema></edmx:StorageModels>
@@ -284,8 +227,6 @@
           <NavigationProperty Name="Land1" Relationship="Self.FK_Hotel_Land" FromRole="Hotel" ToRole="Land" />
           <NavigationProperty Name="HotelBilds" Relationship="Self.FK_HotelBild_Hotel" FromRole="Hotel" ToRole="HotelBild" />
           <NavigationProperty Name="Reise_Hotel" Relationship="Self.FK_Reise_Hotel_Hotel" FromRole="Hotel" ToRole="Reise_Hotel" />
-          <Property Name="Manager" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="Email" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="true" />
         </EntityType>
         <EntityType Name="HotelBild">
           <Key>
@@ -351,8 +292,8 @@
           </Key>
           <Property Name="ReiseID" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="Land" Type="Int64" Nullable="false" />
-          <Property Name="Start" Type="DateTime" Nullable="false" Precision="0" />
-          <Property Name="Ende" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="Start" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="Ende" Type="DateTime" Nullable="false" Precision="3" />
           <Property Name="Preis" Type="Decimal" Precision="18" Scale="2" Nullable="false" />
           <Property Name="Leitung" Type="Boolean" Nullable="false" />
           <Property Name="NameLeitung" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
@@ -548,122 +489,99 @@
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
     <edmx:Mappings>
-      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
-        <EntityContainerMapping StorageEntityContainer="M120ModelStoreContainer" CdmEntityContainer="M120Entities">
-          <EntitySetMapping Name="Hotels">
-            <EntityTypeMapping TypeName="M120Model.Hotel">
-              <MappingFragment StoreEntitySet="Hotel">
-                <ScalarProperty Name="Email" ColumnName="Email" />
-                <ScalarProperty Name="Manager" ColumnName="Manager" />
-                <ScalarProperty Name="HotelID" ColumnName="HotelID" />
-                <ScalarProperty Name="Name" ColumnName="Name" />
-                <ScalarProperty Name="Ort" ColumnName="Ort" />
-                <ScalarProperty Name="Land" ColumnName="Land" />
-                <ScalarProperty Name="Sterne" ColumnName="Sterne" />
-                <ScalarProperty Name="AnzahlZimmer" ColumnName="AnzahlZimmer" />
-                <ScalarProperty Name="TagesPreis" ColumnName="TagesPreis" />
-                <ScalarProperty Name="Telefon" ColumnName="Telefon" />
-                <ScalarProperty Name="Web" ColumnName="Web" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="HotelBilds">
-            <EntityTypeMapping TypeName="M120Model.HotelBild">
-              <MappingFragment StoreEntitySet="HotelBild">
-                <ScalarProperty Name="BildID" ColumnName="BildID" />
-                <ScalarProperty Name="HotelID" ColumnName="HotelID" />
-                <ScalarProperty Name="Reihenfolge" ColumnName="Reihenfolge" />
-                <ScalarProperty Name="Bild" ColumnName="Bild" />
-                <ScalarProperty Name="Beschreibung" ColumnName="Beschreibung" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="Kundes">
-            <EntityTypeMapping TypeName="M120Model.Kunde">
-              <MappingFragment StoreEntitySet="Kunde">
-                <ScalarProperty Name="GUIUserFK" ColumnName="GUIUserFK" />
-                <ScalarProperty Name="Email" ColumnName="Email" />
-                <ScalarProperty Name="KundeID" ColumnName="KundeID" />
-                <ScalarProperty Name="Anrede" ColumnName="Anrede" />
-                <ScalarProperty Name="Vorname" ColumnName="Vorname" />
-                <ScalarProperty Name="Name" ColumnName="Name" />
-                <ScalarProperty Name="NameZusatz" ColumnName="NameZusatz" />
-                <ScalarProperty Name="StrasseNr" ColumnName="StrasseNr" />
-                <ScalarProperty Name="PLZ" ColumnName="PLZ" />
-                <ScalarProperty Name="Ort" ColumnName="Ort" />
-                <ScalarProperty Name="Telefon" ColumnName="Telefon" />
-                <ScalarProperty Name="Mobile" ColumnName="Mobile" />
-                <ScalarProperty Name="Web" ColumnName="Web" />
-                <ScalarProperty Name="Geburtsdatum" ColumnName="Geburtsdatum" />
-                <ScalarProperty Name="PassNr" ColumnName="PassNr" />
-                <ScalarProperty Name="Nationalitaet" ColumnName="Nationalitaet" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="Kunde_Reise">
-            <EntityTypeMapping TypeName="M120Model.Kunde_Reise">
-              <MappingFragment StoreEntitySet="Kunde_Reise">
-                <ScalarProperty Name="Kunde_Reise_ID" ColumnName="Kunde_Reise_ID" />
-                <ScalarProperty Name="Kunde" ColumnName="Kunde" />
-                <ScalarProperty Name="Reise" ColumnName="Reise" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="Lands">
-            <EntityTypeMapping TypeName="M120Model.Land">
-              <MappingFragment StoreEntitySet="Land">
-                <ScalarProperty Name="LandID" ColumnName="LandID" />
-                <ScalarProperty Name="Name" ColumnName="Name" />
-                <ScalarProperty Name="Kurzname" ColumnName="Kurzname" />
-                <ScalarProperty Name="Flagge" ColumnName="Flagge" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="Reises">
-            <EntityTypeMapping TypeName="M120Model.Reise">
-              <MappingFragment StoreEntitySet="Reise">
-                <ScalarProperty Name="ReiseID" ColumnName="ReiseID" />
-                <ScalarProperty Name="Land" ColumnName="Land" />
-                <ScalarProperty Name="Start" ColumnName="Start" />
-                <ScalarProperty Name="Ende" ColumnName="Ende" />
-                <ScalarProperty Name="Preis" ColumnName="Preis" />
-                <ScalarProperty Name="Leitung" ColumnName="Leitung" />
-                <ScalarProperty Name="NameLeitung" ColumnName="NameLeitung" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="Reise_Hotel">
-            <EntityTypeMapping TypeName="M120Model.Reise_Hotel">
-              <MappingFragment StoreEntitySet="Reise_Hotel">
-                <ScalarProperty Name="Reise_Hotel_ID" ColumnName="Reise_Hotel_ID" />
-                <ScalarProperty Name="Reise" ColumnName="Reise" />
-                <ScalarProperty Name="Hotel" ColumnName="Hotel" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="sysdiagrams">
-            <EntityTypeMapping TypeName="M120Model.sysdiagram">
-              <MappingFragment StoreEntitySet="sysdiagrams">
-                <ScalarProperty Name="name" ColumnName="name" />
-                <ScalarProperty Name="principal_id" ColumnName="principal_id" />
-                <ScalarProperty Name="diagram_id" ColumnName="diagram_id" />
-                <ScalarProperty Name="version" ColumnName="version" />
-                <ScalarProperty Name="definition" ColumnName="definition" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="GUIUsers">
-            <EntityTypeMapping TypeName="M120Model.GUIUser">
-              <MappingFragment StoreEntitySet="GUIUser">
-                <ScalarProperty Name="password" ColumnName="password" />
-                <ScalarProperty Name="username" ColumnName="username" />
-                <ScalarProperty Name="UserID" ColumnName="UserID" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-        </EntityContainerMapping>
-      </Mapping>
-    </edmx:Mappings>
+    <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="M120ModelStoreContainer" CdmEntityContainer="M120Entities">
+    <EntitySetMapping Name="Hotels">
+      <EntityTypeMapping TypeName="IsTypeOf(M120Model.Hotel)">
+        <MappingFragment StoreEntitySet="Hotels">
+          <ScalarProperty Name="HotelID" ColumnName="HotelID" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="Ort" ColumnName="Ort" />
+          <ScalarProperty Name="Land" ColumnName="Land" />
+          <ScalarProperty Name="Sterne" ColumnName="Sterne" />
+          <ScalarProperty Name="manager" ColumnName="manager" />
+          <ScalarProperty Name="AnzahlZimmer" ColumnName="AnzahlZimmer" />
+          <ScalarProperty Name="TagesPreis" ColumnName="TagesPreis" />
+          <ScalarProperty Name="Telefon" ColumnName="Telefon" />
+          <ScalarProperty Name="email" ColumnName="email" />
+          <ScalarProperty Name="Web" ColumnName="Web" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="HotelBilds">
+      <EntityTypeMapping TypeName="IsTypeOf(M120Model.HotelBild)">
+        <MappingFragment StoreEntitySet="HotelBilds">
+          <ScalarProperty Name="BildID" ColumnName="BildID" />
+          <ScalarProperty Name="HotelID" ColumnName="HotelID" />
+          <ScalarProperty Name="Reihenfolge" ColumnName="Reihenfolge" />
+          <ScalarProperty Name="Bild" ColumnName="Bild" />
+          <ScalarProperty Name="Beschreibung" ColumnName="Beschreibung" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Kunde_Reise">
+      <EntityTypeMapping TypeName="IsTypeOf(M120Model.Kunde_Reise)">
+        <MappingFragment StoreEntitySet="Kunde_Reise">
+          <ScalarProperty Name="Kunde_Reise_ID" ColumnName="Kunde_Reise_ID" />
+          <ScalarProperty Name="Kunde" ColumnName="Kunde" />
+          <ScalarProperty Name="Reise" ColumnName="Reise" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Lands">
+      <EntityTypeMapping TypeName="IsTypeOf(M120Model.Land)">
+        <MappingFragment StoreEntitySet="Lands">
+          <ScalarProperty Name="LandID" ColumnName="LandID" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="Kurzname" ColumnName="Kurzname" />
+          <ScalarProperty Name="Flagge" ColumnName="Flagge" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Reises">
+      <EntityTypeMapping TypeName="IsTypeOf(M120Model.Reise)">
+        <MappingFragment StoreEntitySet="Reises">
+          <ScalarProperty Name="ReiseID" ColumnName="ReiseID" />
+          <ScalarProperty Name="Land" ColumnName="Land" />
+          <ScalarProperty Name="Start" ColumnName="Start" />
+          <ScalarProperty Name="Ende" ColumnName="Ende" />
+          <ScalarProperty Name="Preis" ColumnName="Preis" />
+          <ScalarProperty Name="Leitung" ColumnName="Leitung" />
+          <ScalarProperty Name="NameLeitung" ColumnName="NameLeitung" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Reise_Hotel">
+      <EntityTypeMapping TypeName="IsTypeOf(M120Model.Reise_Hotel)">
+        <MappingFragment StoreEntitySet="Reise_Hotel">
+          <ScalarProperty Name="Reise_Hotel_ID" ColumnName="Reise_Hotel_ID" />
+          <ScalarProperty Name="Reise" ColumnName="Reise" />
+          <ScalarProperty Name="Hotel" ColumnName="Hotel" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="sysdiagrams">
+      <EntityTypeMapping TypeName="IsTypeOf(M120Model.sysdiagram)">
+        <MappingFragment StoreEntitySet="sysdiagrams">
+          <ScalarProperty Name="diagram_id" ColumnName="diagram_id" />
+          <ScalarProperty Name="name" ColumnName="name" />
+          <ScalarProperty Name="principal_id" ColumnName="principal_id" />
+          <ScalarProperty Name="version" ColumnName="version" />
+          <ScalarProperty Name="definition" ColumnName="definition" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="GUIUsers">
+      <EntityTypeMapping TypeName="IsTypeOf(M120Model.GUIUser)">
+        <MappingFragment StoreEntitySet="GUIUsers">
+          <ScalarProperty Name="UserID" ColumnName="UserID" />
+          <ScalarProperty Name="username" ColumnName="username" />
+          <ScalarProperty Name="password" ColumnName="password" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping></edmx:Mappings>
   </edmx:Runtime>
   <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
   <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
@@ -677,7 +595,7 @@
         <DesignerProperty Name="ValidateOnBuild" Value="true" />
         <DesignerProperty Name="EnablePluralization" Value="true" />
         <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
-        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="UseLegacyProvider" Value="False" />
         <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
       </DesignerInfoPropertySet>
     </Options>

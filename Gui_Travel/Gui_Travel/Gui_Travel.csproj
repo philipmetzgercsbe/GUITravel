@@ -207,6 +207,7 @@
       <DependentUpon>GUITravel.edmx</DependentUpon>
       <LastGenOutput>GUITravel.Context.cs</LastGenOutput>
     </Content>
+    <Content Include="GUITravel.edmx.sql" />
     <Content Include="GUITravel.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <DependentUpon>GUITravel.edmx</DependentUpon>

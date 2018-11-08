@@ -32,8 +32,6 @@ namespace Gui_Travel
         public string Telefon { get; set; }
         public string email { get; set; }
         public string Web { get; set; }
-        public string Manager { get; set; }
-        public string Email { get; set; }
     
         public virtual Land Land1 { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
