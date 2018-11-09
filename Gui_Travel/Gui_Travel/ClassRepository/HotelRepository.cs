@@ -31,6 +31,10 @@ namespace Gui_Travel.ClassRepository
         private void setAttributes(string name, string ort, string land, string manager, short rooms, decimal priceperDay,
             string phone, string email, string website, Hotel hotel = null)
         {
+            if (hotel != null)
+            {
+                Hotel = hotel;
+            }
             Hotel.Name = name;
             Hotel.Ort = ort;
             Hotel.Land = CountryList.Find(x => x.Name == land).LandID;

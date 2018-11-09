@@ -4,6 +4,7 @@ using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Media;
 using Gui_Travel.ClassRepository;
+using Gui_Travel.CustomControls;
 
 namespace Gui_Travel
 {
@@ -39,12 +40,12 @@ namespace Gui_Travel
             
             if (usercmds.Verify(usn, pw))
             {
-                int kundeID = M120Entities.GUIUsers.FirstOrDefault(x => x.username == usn).UserID;
+                int kundeID = (int)M120Entities.GUIUsers.FirstOrDefault(x => x.username == usn).UserID;
                 Kunde = M120Entities.Kundes.Find(kundeID);
-                UsnTxtbox.Background = new SolidColorBrush(Colors.Green);
-                PasswordBox.Background = new SolidColorBrush(Colors.Green);
+               
             }
-            TabControl MainTab = new TabControl();
+            MainWindow.Window.AddMessageBox("Successfull login", "Your logged in");
+            tabControl MainTab = new tabControl();
             MainWindow.Window.ContentGrid.Children.Remove(this);
             MainWindow.Window.ContentGrid.Children.Add(MainTab);
 

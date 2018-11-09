@@ -6,10 +6,10 @@
              xmlns:local="clr-namespace:Gui_Travel.CustomControls"
              mc:Ignorable="d" 
              d:DesignHeight="1074" d:DesignWidth="768">
-    <Grid>
-        <TabControl HorizontalAlignment="Left"  Margin="10,10,10,10" VerticalAlignment="Top" Height="1074" Width="768" >
-            <TabItem Header="You" MouseDown="LoadUserContent">
-                <Grid Background="#FFE5E5E5">
+    <Grid >
+        <TabControl HorizontalAlignment="Stretch"  Margin="10,10,10,10" VerticalAlignment="Stretch" Height="1074" Width="768" >
+            <TabItem Header="You" MouseDown="LoadUserContent" MouseEnter="changeBackground">
+                <Grid Name="UserInformationGrid" Background="#FFE5E5E5"  >
                     
                 </Grid>
 

@@ -77,31 +77,30 @@
     <Compile Include="ClassRepository\HotelRepository.cs" />
     <Compile Include="ClassRepository\KundeRepository.cs" />
     <Compile Include="ClassRepository\ReiseRepository.cs" />
-    <Compile Include="CustomControls\PurchaseForm.xaml.cs">
-      <DependentUpon>PurchaseForm.xaml</DependentUpon>
+    <Compile Include="CustomControls\adminControl.xaml.cs">
+      <DependentUpon>adminControl.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="CustomControls\purchaseForm.xaml.cs">
+      <DependentUpon>purchaseForm.xaml</DependentUpon>
     </Compile>
     <Compile Include="CustomControls\tabControl.xaml.cs">
       <DependentUpon>tabControl.xaml</DependentUpon>
     </Compile>
-    <Compile Include="CustomControls\UserInformation.xaml.cs">
-      <DependentUpon>UserInformation.xaml</DependentUpon>
+    <Compile Include="CustomControls\userInformation.xaml.cs">
+      <DependentUpon>userInformation.xaml</DependentUpon>
     </Compile>
-    <Compile Include="GUITravel.Context.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>GUITravel.Context.tt</DependentUpon>
+    <Compile Include="CustomControls\registrationControl.xaml.cs">
+      <DependentUpon>registrationControl.xaml</DependentUpon>
     </Compile>
     <Compile Include="GUITravel.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>GUITravel.tt</DependentUpon>
     </Compile>
-    <Compile Include="GUITravel.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>GUITravel.edmx</DependentUpon>
-    </Compile>
     <Compile Include="GUIUser.cs">
+      <DependentUpon>GUITravel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Hotel.cs">
       <DependentUpon>GUITravel.tt</DependentUpon>
     </Compile>
     <Compile Include="HotelBild.cs">
@@ -122,20 +121,15 @@
     <Compile Include="Reise_Hotel.cs">
       <DependentUpon>GUITravel.tt</DependentUpon>
     </Compile>
-    <Compile Include="sysdiagram.cs">
-      <DependentUpon>GUITravel.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Hotel.cs">
-      <DependentUpon>GUITravel.tt</DependentUpon>
-    </Compile>
-    <Compile Include="CustomControls\registrationControl.xaml.cs">
-      <DependentUpon>registrationControl.xaml</DependentUpon>
-    </Compile>
+    <Page Include="CustomControls\adminControl.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="CustomControls\loginControl.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="CustomControls\PurchaseForm.xaml">
+    <Page Include="CustomControls\purchaseForm.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -143,7 +137,7 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="CustomControls\UserInformation.xaml">
+    <Page Include="CustomControls\userInformation.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -157,6 +151,16 @@
     </Compile>
     <Compile Include="CustomControls\loginControl.xaml.cs">
       <DependentUpon>loginControl.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="GUITravel.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>GUITravel.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="GUITravel.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>GUITravel.edmx</DependentUpon>
     </Compile>
     <Compile Include="MainWindow.xaml.cs">
       <DependentUpon>MainWindow.xaml</DependentUpon>

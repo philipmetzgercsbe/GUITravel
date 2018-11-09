@@ -61,7 +61,7 @@ namespace Gui_Travel.ClassRepository
         
         private static string CreateSalt()
         {
-            var Salt = new byte[DateTime.Now.Millisecond].ToString();
+            var Salt = BCrypt.Net.BCrypt.GenerateSalt(20);
             return Salt;
         }
 

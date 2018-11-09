@@ -26,7 +26,7 @@ namespace Gui_Travel.ClassRepository
         {
             kunde = new Kunde();
             getCountries();
-            setAttributes(anrede, firstname, secondname, lastname, streetNr, plz, place, phone, mobile, email, birthDate, passNr, nationality);
+            setAttributes(anrede, firstname, secondname, lastname, streetNr, plz, place, phone, mobile, email, birthDate, passNr, nationality,kunde);
             User.addUser(username,password);
             M120Entities.SaveChanges();
             M120Entities.Kundes.Add(kunde);
@@ -49,7 +49,7 @@ namespace Gui_Travel.ClassRepository
             kunde.Email = email;
             kunde.Geburtsdatum = birthDate;
             kunde.PassNr = passNr;
-            kunde.Nationalitaet = CountryList.Find(x => x.Name == nationality).LandID;
+            kunde.Nationalitaet = CountryList.Find(x => x.Kurzname == nationality).LandID;
         }
 
 
@@ -75,7 +75,7 @@ namespace Gui_Travel.ClassRepository
         {
             kunde = M120Entities.Kundes.Find(kunde);
             setAttributes(anrede, firstname, secondname, lastname, streetNr, plz, place, phone, mobile, email, birthDate, passNr, nationality,kunde);
-            User.editUser(M120Entities.GUIUsers.Find(kunde.GUIUserFK),username,password);
+            User.editUser(M120Entities.GUIUsers.Find(kunde.UserFK),username,password);
             M120Entities.SaveChanges();
 
         }

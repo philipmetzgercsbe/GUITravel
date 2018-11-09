@@ -39,15 +39,14 @@ namespace Gui_Travel
             KundeRepository kundeRepository = new KundeRepository();
 
             
-            string usersalututation = Enum.GetName(typeof(KundeRepository.Anrede), SalutationComboBox.SelectedValue);
+            string usersalututation = Enum.GetName(typeof(KundeRepository.Anrede), (KundeRepository.Anrede) (SalutationComboBox.SelectedIndex ));
             Enum.TryParse<KundeRepository.Anrede>(usersalututation, out var mySalutation);
-            //Find out how to parse Combo
+            
 
             kundeRepository.addKunde(mySalutation,FirstnameTxtbox_.Text,SecondnameTxtbox.Text,LastnameTxtbox_.Text, SteetNrTxtbox_.Text,Convert.ToInt16(ZIPTxtbox_.Text),PlaceTxtbox_.Text,PhoneTxtbox.Text,MobileTxtbox.Text,EmailTxtbox_.Text,(DateTime) BirthdateDtPck.SelectedDate,PassNrTxtbox.Text,NationalityCombobox_.SelectedValue.ToString(),usnTxtBox_.Text, passwordBox.Password);
             MainWindow.Window.AddMessageBox("You were successfully registered", "Success");
-            MainWindow.Window.DataContext = null;
-            loginControl login = new loginControl();
             MainWindow.Window.ContentGrid.Children.Remove(this);
+            loginControl login = new loginControl();
             MainWindow.Window.ContentGrid.Children.Add(login);
 
 
@@ -59,20 +58,22 @@ namespace Gui_Travel
             var Panels = MainWindow.FindVisualChildren<StackPanel>(this).ToList();
             foreach (var txtbox in RequiredForms)
             {
-                if (txtbox.Name.Contains("_") && txtbox.Text.Contains("") && passwordBox.Password.Contains("") && SalutationComboBox.SelectedItem.Equals(null))
+                if (txtbox.Name.Contains("_") && txtbox.Text.Contains("") && passwordBox.Password.Contains("") && SalutationComboBox.SelectedItem.ToString() == "" && SalutationComboBox.SelectedItem.Equals(null))
                 {
                     
+                    //MainPanel.Children.Add()
                     txtbox.Background = new SolidColorBrush(Colors.Firebrick);
                     passwordBox.Background = new SolidColorBrush(Colors.Firebrick);
                     SalutationComboBox.Background = new SolidColorBrush(Colors.Firebrick);
                     foreach (var panel in Panels)
                     {
-                        if (panel.Name == "MainPanel")
+                        if (panel.Name != "MainPanel")
                         {
-                            
+                            Label errorLabel = new Label() { Content = "Required", Foreground = new SolidColorBrush(Colors.Firebrick) };
+                            panel.Children.Add(errorLabel);
                         }
-                        Label errorLabel = new Label(){Content = "Required", Foreground = new SolidColorBrush(Colors.Firebrick) };
-                        panel.Children.Add(errorLabel);
+                        
+                        
 
                     }
                    

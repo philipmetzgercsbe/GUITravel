@@ -31,10 +31,30 @@ namespace Gui_Travel.CustomControls
             if (Startdtpck.SelectedDate <= Enddtdtpck.SelectedDate)
             {
                 int diff = (Enddtdtpck.SelectedDate.Value - Startdtpck.SelectedDate.Value).Days;
-                Pricelbl.Content =  m120Entities.Hotels.Find(HotelNameLbl.Content).TagesPreis * diff ;
+                if (m120Entities.Hotels != null)
+                    Pricelbl.Content = m120Entities.Hotels.Find(HotelNameLbl.Content).TagesPreis * diff;
             }
 
-            
+            if (Startdtpck.SelectedDate.Value.AddDays(1) == Enddtdtpck.SelectedDate.Value)
+            {
+                Pricelbl.Content = m120Entities.Hotels.Find(HotelNameLbl.Content).TagesPreis;
+            }
+
+        }
+
+        private void UsedAt(UIElement form)
+        {
+           
+//            if (form.Equals(this.Parent.GetValue(tabControl )))
+//            {
+//                
+//            }
+        }
+
+        private void DeleteForm(object sender, RoutedEventArgs e)
+        {
+            //Get self 
+            //Check if travel or hotel delete self
         }
     }
 }

@@ -30,17 +30,15 @@ namespace Gui_Travel
         public string Ort { get; set; }
         public string Telefon { get; set; }
         public string Mobile { get; set; }
-        public string email { get; set; }
+        public string Email { get; set; }
         public string Web { get; set; }
         public System.DateTime Geburtsdatum { get; set; }
         public string PassNr { get; set; }
         public long Nationalitaet { get; set; }
-        public string Email { get; set; }
-        public Nullable<int> GUIUserFK { get; set; }
+        public long UserFK { get; set; }
     
         public virtual Land Land { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Kunde_Reise> Kunde_Reise { get; set; }
-        public virtual GUIUser GUIUser { get; set; }
     }
 }

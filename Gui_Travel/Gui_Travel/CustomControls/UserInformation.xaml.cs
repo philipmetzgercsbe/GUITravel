@@ -41,8 +41,8 @@ namespace Gui_Travel.CustomControls
             this.MobileTxtbox.Text = loginControl.Kunde.Mobile;
             this.BirthdateDtPck.DisplayDate = loginControl.Kunde.Geburtsdatum;
             this.PassNrTxtbox.Text = loginControl.Kunde.PassNr;
-            this.usnTxtBox.Text = m120Entities.GUIUsers.Find(loginControl.Kunde.GUIUser)?.username ?? throw new InvalidOperationException();
-            this.passwordBox.Password = m120Entities.GUIUsers.Find(loginControl.Kunde.GUIUser)?.password ?? throw new InvalidOperationException();
+            this.usnTxtBox.Text = m120Entities.GUIUsers.Find(loginControl.Kunde.UserFK)?.username ?? throw new InvalidOperationException();
+            this.passwordBox.Password = m120Entities.GUIUsers.Find(loginControl.Kunde.UserFK)?.password ?? throw new InvalidOperationException();
         }
     }
 }

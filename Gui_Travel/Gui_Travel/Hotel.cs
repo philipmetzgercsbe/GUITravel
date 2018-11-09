@@ -26,11 +26,11 @@ namespace Gui_Travel
         public string Ort { get; set; }
         public long Land { get; set; }
         public byte Sterne { get; set; }
-        public string manager { get; set; }
+        public string Manager { get; set; }
         public short AnzahlZimmer { get; set; }
         public decimal TagesPreis { get; set; }
         public string Telefon { get; set; }
-        public string email { get; set; }
+        public string Email { get; set; }
         public string Web { get; set; }
     
         public virtual Land Land1 { get; set; }

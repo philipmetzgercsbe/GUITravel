@@ -25,6 +25,7 @@ namespace Gui_Travel
             throw new UnintentionalCodeFirstException();
         }
     
+        public virtual DbSet<GUIUser> GUIUsers { get; set; }
         public virtual DbSet<Hotel> Hotels { get; set; }
         public virtual DbSet<HotelBild> HotelBilds { get; set; }
         public virtual DbSet<Kunde> Kundes { get; set; }
@@ -32,7 +33,5 @@ namespace Gui_Travel
         public virtual DbSet<Land> Lands { get; set; }
         public virtual DbSet<Reise> Reises { get; set; }
         public virtual DbSet<Reise_Hotel> Reise_Hotel { get; set; }
-        public virtual DbSet<sysdiagram> sysdiagrams { get; set; }
-        public virtual DbSet<GUIUser> GUIUsers { get; set; }
     }
 }

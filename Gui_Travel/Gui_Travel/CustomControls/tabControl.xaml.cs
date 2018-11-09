@@ -4,6 +4,7 @@ using System.Linq;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Input;
+using System.Windows.Media;
 using Gui_Travel.ClassRepository;
 
 
@@ -36,7 +37,7 @@ namespace Gui_Travel.CustomControls
         private void LoadUserContent(object sender, MouseButtonEventArgs e)
         {
             UserInformation userInformation = new UserInformation();
-            this.AddChild(userInformation);
+            UserInformationGrid.Children.Add(userInformation);
            
         }
 
@@ -49,6 +50,7 @@ namespace Gui_Travel.CustomControls
             foreach (var hotel in hotels)
             {
                 PurchaseForm purchaseForm = new PurchaseForm();
+                purchaseForm.Name = hotel.Name;
                 purchaseForm.HotelImage.Source = HotelImageRepo.BitmapImageFromBytes(m120Entities.HotelBilds.Find(hotel)?.Bild);
                 purchaseForm.Startdtpck.DisplayDate = DateTime.Now.Date;
                 purchaseForm.Enddtdtpck.DisplayDate = DateTime.Now.Date;
@@ -69,13 +71,15 @@ namespace Gui_Travel.CustomControls
             ReiseRepository reiseRepository = new ReiseRepository();
             foreach (var travel in travels)
             {
+               
+                
                 PurchaseForm purchaseForm = new PurchaseForm();
                 purchaseForm.Enddtdtpck.IsEnabled = false;
                 purchaseForm.Startdtpck.SelectedDate = travel.Start;
                 purchaseForm.Enddtdtpck.SelectedDate = travel.Ende;
                 purchaseForm.HotelNameLbl.Content = reiseRepository.CountriesList.Find(x => x.LandID == travel.Land).Name;
                 purchaseForm.Pricelbl.Content = travel.Preis;
-                purchaseForm.HotelDescriptiontb.Text =
+                purchaseForm.HotelDescriptiontb.Text = 
                     travel.Leitung?"geleitet":"ungeleitet" + travel.NameLeitung != "" ? travel.NameLeitung : ""; 
                 TravelsStackPanel.Children.Add(purchaseForm);
                 //Load into same CustomControl as hotels 
@@ -83,8 +87,11 @@ namespace Gui_Travel.CustomControls
             }
         }
 
-        
 
-        
+        private void changeBackground(object sender, MouseEventArgs e)
+        {
+            this.Background = new SolidColorBrush(Colors.Blue);
+           
+        }
     }
 }

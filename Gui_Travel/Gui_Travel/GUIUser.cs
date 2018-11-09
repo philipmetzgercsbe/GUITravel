@@ -14,17 +14,8 @@ namespace Gui_Travel
     
     public partial class GUIUser
     {
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public GUIUser()
-        {
-            this.Kundes = new HashSet<Kunde>();
-        }
-    
-        public int UserID { get; set; }
+        public long UserID { get; set; }
         public string username { get; set; }
         public string password { get; set; }
-    
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Kunde> Kundes { get; set; }
     }
 }
