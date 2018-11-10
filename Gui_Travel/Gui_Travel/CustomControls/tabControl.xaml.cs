@@ -15,10 +15,12 @@ namespace Gui_Travel.CustomControls
     /// </summary>
     public partial class tabControl : UserControl
     {
+        public static tabControl self;
         public tabControl()
         {
             InitializeComponent();
-            
+            self = this;
+
         }
 
 //        private void AddAdminTools()
@@ -56,6 +58,7 @@ namespace Gui_Travel.CustomControls
                 purchaseForm.Enddtdtpck.DisplayDate = DateTime.Now.Date;
                 purchaseForm.HotelDescriptiontb.Text = "Email:" + hotel.Email + "Anzahl Zimmer: " + hotel.AnzahlZimmer.ToString("F") +"Manager: " + hotel.Manager + "Telefon: " +
                                                        hotel.Telefon + "Ort: " + hotel.Ort +"Website: "  + hotel.Web;
+                purchaseForm.DeleteBtn.Visibility = Visibility.Hidden;
                 HotelStackPanel.Children.Add(purchaseForm);
                 //Load Data into CustomControl
                 //Load all CustomControls into Panel
@@ -80,7 +83,8 @@ namespace Gui_Travel.CustomControls
                 purchaseForm.HotelNameLbl.Content = reiseRepository.CountriesList.Find(x => x.LandID == travel.Land).Name;
                 purchaseForm.Pricelbl.Content = travel.Preis;
                 purchaseForm.HotelDescriptiontb.Text = 
-                    travel.Leitung?"geleitet":"ungeleitet" + travel.NameLeitung != "" ? travel.NameLeitung : ""; 
+                    travel.Leitung?"geleitet":"ungeleitet" + travel.NameLeitung != "" ? travel.NameLeitung : "";
+                purchaseForm.DeleteBtn.Visibility = Visibility.Hidden;
                 TravelsStackPanel.Children.Add(purchaseForm);
                 //Load into same CustomControl as hotels 
                 //Do the same step again

@@ -12,6 +12,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using Gui_Travel.ClassRepository;
 
 namespace Gui_Travel.CustomControls
 {
@@ -53,8 +54,20 @@ namespace Gui_Travel.CustomControls
 
         private void DeleteForm(object sender, RoutedEventArgs e)
         {
-            //Get self 
-            //Check if travel or hotel delete self
+            M120Entities m120Entities = new M120Entities();
+            if (this.Name.StartsWith("Travel"))
+            {
+                ReiseRepository reiseRepository = new ReiseRepository();
+                Reise reisetodelete = m120Entities.Reises.Find(this.Name);
+                reiseRepository.removeTravel(m120Entities.Reises.Find(reisetodelete));
+
+            } else if (this.Name.Contains("Hotel"))
+            {
+                HotelRepository hotelRepository = new HotelRepository();
+                Hotel hoteltodelete = m120Entities.Hotels.Find(HotelNameLbl.Content);
+                hotelRepository.deleteHotel(hoteltodelete);
+            }
+            
         }
     }
 }

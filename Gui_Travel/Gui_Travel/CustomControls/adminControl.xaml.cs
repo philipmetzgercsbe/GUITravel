@@ -1,17 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
 using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
 using Gui_Travel.ClassRepository;
 
 namespace Gui_Travel.CustomControls
@@ -29,6 +21,7 @@ namespace Gui_Travel.CustomControls
 
         private void loadHotelContent(object sender, MouseButtonEventArgs e)
         {
+            this.TabIndex = 1;
             List<Hotel> allHotels = M120Entities.Hotels.ToList();
             HotelImageRepository imageRepository = new HotelImageRepository();
             foreach (var hotel in allHotels)
@@ -44,6 +37,42 @@ namespace Gui_Travel.CustomControls
                 hotelGrid.Children.Add(purchaseForm);
             }
 
+        }
+
+        private void loadTravelContent(object sender, MouseButtonEventArgs e)
+        {
+            this.TabIndex = 2;
+            List<Reise> Travels = M120Entities.Reises.ToList();
+             ReiseRepository reiseRepository = new ReiseRepository();
+            foreach (var travel in Travels)
+            {
+                PurchaseForm purchaseForm = new PurchaseForm();
+                purchaseForm.Enddtdtpck.IsEnabled = false;
+                purchaseForm.Startdtpck.SelectedDate = travel.Start;
+                purchaseForm.Enddtdtpck.SelectedDate = travel.Ende;
+                purchaseForm.HotelNameLbl.Content = reiseRepository.CountriesList.Find(x => x.LandID == travel.Land).Name;
+                purchaseForm.Pricelbl.Content = travel.Preis;
+                purchaseForm.HotelDescriptiontb.Text =
+                    travel.Leitung ? "geleitet" : "ungeleitet" + travel.NameLeitung != "" ? travel.NameLeitung : "";
+                travelGrid.Children.Add(purchaseForm);
+            }
+        }
+
+        private void AddObject(object sender, RoutedEventArgs e)
+        {
+            Page AddPage = new Page();
+
+            if (this.TabIndex == 1)
+            {
+                //Create AddHotel
+
+                AddPage.Content = new AddHotel();
+
+                
+            }else if (this.TabIndex == 2)
+            {
+                //AddPage.Content = new AddTravel
+            }
         }
     }
 }

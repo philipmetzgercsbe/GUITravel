@@ -1,0 +1,75 @@
+﻿<UserControl x:Class="Gui_Travel.CustomControls.AddHotel"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:Gui_Travel.CustomControls"
+             mc:Ignorable="d" 
+             d:DesignHeight="450" d:DesignWidth="800">
+    <UserControl.Resources>
+        <Image x:Key="no-image" Source="../Images_Icons/no-image.png"></Image>
+    </UserControl.Resources>
+    <Grid Name="AddHGrid">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="11*"/>
+            <RowDefinition Height="214*"/>
+        </Grid.RowDefinitions>
+        <StackPanel Name="addHotelPanel" Margin="0,0,0,-0.4" Grid.RowSpan="2">
+            <Image x:Name="HotelImage" Source="{Binding ImagePath}" Height="100" Margin="0,0,648,0"/>
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="189*"/>
+                    <ColumnDefinition Width="211*"/>
+                </Grid.ColumnDefinitions>
+                <TextBox Grid.Row="0" x:Name="TxtFile" Width="400" HorizontalAlignment="Center" Margin="196,-55,204,61.6" Grid.ColumnSpan="2"/>
+                <Button x:Name="FileOpenBtn" Content="Load" Click="LoadImagefromSource"  Height="25" Margin="255.776,-50,18,74.6" Grid.Column="1" />
+                <TextBlock Grid.Column="1" Name="ImageDescription" Width="500" Height="50" Grid.ColumnSpan="2" Margin="150,0,150,-0.4"></TextBlock>
+            </Grid>
+            <StackPanel>
+                <Label Name="hotelNamelbl" Content="Name"></Label>
+                <TextBox Name="hotelNametxtbox"></TextBox>
+            </StackPanel>
+            <StackPanel >
+                <Label Name="hotelPlacelbl" Content="Place"></Label>
+                <TextBox Name="hotelPlacetxtbox"></TextBox>
+            </StackPanel>
+            <StackPanel>
+                <Label Name="hotelCountrylbl" Content="Country"></Label>
+                <ComboBox Name="hotelCountrycombobox"></ComboBox>
+            </StackPanel>
+            <StackPanel >
+                <Label Name="hotelManagerlbl" Content="Manager"></Label>
+                <TextBox Name="hotelManagertxtbox"></TextBox>
+            </StackPanel>
+            <StackPanel >
+                <Label Name="hotelAmountofRoomslbl" Content="Rooms"></Label>
+                <TextBox Name="hotelAmountofRoomstxtbox"></TextBox>
+            </StackPanel>
+            <StackPanel >
+                <Label Name="hotelPricePerDaylbl" Content="Price per Day"></Label>
+                <TextBox Name="hotelPricePerDaytxtbox"></TextBox>
+            </StackPanel>
+            <StackPanel >
+                <Label Name="hotelPhonelbl" Content="Phonenumber"></Label>
+                <TextBox Name="hotelPhonetxtbox"></TextBox>
+            </StackPanel>
+            <StackPanel >
+                <Label Name="hotelEmaillbl" Content="Email"></Label>
+                <TextBox Name="hotelEmailtxtbox"></TextBox>
+            </StackPanel>
+            <StackPanel >
+                <Label Name="hotelWeblbl" Content="Website"></Label>
+                <TextBox Name="hotelWebtxtbox"></TextBox>
+            </StackPanel>
+            
+
+
+
+
+
+
+
+        </StackPanel>
+
+    </Grid>
+</UserControl>

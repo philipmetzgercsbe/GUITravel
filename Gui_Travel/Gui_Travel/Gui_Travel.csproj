@@ -77,6 +77,9 @@
     <Compile Include="ClassRepository\HotelRepository.cs" />
     <Compile Include="ClassRepository\KundeRepository.cs" />
     <Compile Include="ClassRepository\ReiseRepository.cs" />
+    <Compile Include="CustomControls\AddHotel.xaml.cs">
+      <DependentUpon>AddHotel.xaml</DependentUpon>
+    </Compile>
     <Compile Include="CustomControls\adminControl.xaml.cs">
       <DependentUpon>adminControl.xaml</DependentUpon>
     </Compile>
@@ -121,6 +124,10 @@
     <Compile Include="Reise_Hotel.cs">
       <DependentUpon>GUITravel.tt</DependentUpon>
     </Compile>
+    <Page Include="CustomControls\AddHotel.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="CustomControls\adminControl.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -223,6 +230,7 @@
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
   </ItemGroup>
   <ItemGroup>
+    <Folder Include="Images_Icons\" />
     <Folder Include="Resources\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

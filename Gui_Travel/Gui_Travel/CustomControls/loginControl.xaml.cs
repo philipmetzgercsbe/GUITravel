@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Linq;
+using System.Runtime.CompilerServices;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Media;
@@ -13,9 +14,10 @@ namespace Gui_Travel
     /// </summary>
     public partial class loginControl : UserControl
     {
-        public static Kunde Kunde;
+        private Kunde Kunde;
         
         public static M120Entities M120Entities = new M120Entities();
+        public static loginControl LoginControl;
         public loginControl()
         {
 
@@ -81,6 +83,11 @@ namespace Gui_Travel
             //Get Parent remove this
 
             //Remove this from Panel and load registration 
+        }
+
+        public Kunde GetKunde()
+        {
+            return Kunde;
         }
     }
 }
