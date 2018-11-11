@@ -23,7 +23,7 @@ namespace Gui_Travel.ClassRepository
             Image returnImage = Image.FromStream(ms);
             return returnImage;
         }
-        public byte[] SaveImageToByte(Image image, string desc)
+        public byte[] SaveImageToByte(Image image, string desc = null)
         {
             MemoryStream memStream = new MemoryStream();
             image.Save(memStream, System.Drawing.Imaging.ImageFormat.Gif);

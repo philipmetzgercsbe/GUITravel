@@ -38,16 +38,20 @@
                 <ComboBox Name="hotelCountrycombobox"></ComboBox>
             </StackPanel>
             <StackPanel >
+                <Label Name="hotelRating" Content="Rating"></Label>
+                <TextBox Name="hotelRatingtxtbox" PreviewTextInput="PreviewTextInput" MaxLength="1" ToolTip="Any Value between 0-5.The Value will be rounded to 0.5 if the conditions are met"> </TextBox>
+            </StackPanel>
+            <StackPanel >
                 <Label Name="hotelManagerlbl" Content="Manager"></Label>
                 <TextBox Name="hotelManagertxtbox"></TextBox>
             </StackPanel>
             <StackPanel >
                 <Label Name="hotelAmountofRoomslbl" Content="Rooms"></Label>
-                <TextBox Name="hotelAmountofRoomstxtbox"></TextBox>
+                <TextBox Name="hotelAmountofRoomstxtbox" PreviewTextInput="PreviewTextInput"></TextBox>
             </StackPanel>
             <StackPanel >
                 <Label Name="hotelPricePerDaylbl" Content="Price per Day"></Label>
-                <TextBox Name="hotelPricePerDaytxtbox"></TextBox>
+                <TextBox Name="hotelPricePerDaytxtbox" PreviewTextInput="PreviewTextInput"></TextBox>
             </StackPanel>
             <StackPanel >
                 <Label Name="hotelPhonelbl" Content="Phonenumber"></Label>
@@ -61,7 +65,9 @@
                 <Label Name="hotelWeblbl" Content="Website"></Label>
                 <TextBox Name="hotelWebtxtbox"></TextBox>
             </StackPanel>
-            
+            <Button Name="SaveBtn" Click="SaveHotel" HorizontalAlignment="Left" VerticalAlignment="Bottom" Width="75">Save</Button>
+            <Button Name="CloseBtn" Click="Close" HorizontalAlignment="Left" VerticalAlignment="Bottom" Width="75">Close</Button>
+
 
 
 

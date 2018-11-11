@@ -6,8 +6,11 @@
         xmlns:local="clr-namespace:Gui_Travel"
         mc:Ignorable="d"
         Title="GUI Travel" Height="1074" Width="768">
+    <Window.Background>
+        <ImageBrush Stretch="UniformToFill" ImageSource="Images_Icons/Background.jpg"></ImageBrush>
+    </Window.Background>
     <Grid Name="ContentGrid"/>
-
+    
 
 
 

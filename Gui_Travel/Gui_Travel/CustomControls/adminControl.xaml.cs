@@ -13,6 +13,7 @@ namespace Gui_Travel.CustomControls
     /// </summary>
     public partial class adminControl : UserControl
     {
+        public static Page AddPage = new Page();
         public static M120Entities M120Entities = new M120Entities();
         public adminControl()
         {
@@ -60,7 +61,7 @@ namespace Gui_Travel.CustomControls
 
         private void AddObject(object sender, RoutedEventArgs e)
         {
-            Page AddPage = new Page();
+            
 
             if (this.TabIndex == 1)
             {
@@ -71,6 +72,7 @@ namespace Gui_Travel.CustomControls
                 
             }else if (this.TabIndex == 2)
             {
+                AddPage.Content = new AddHotel();
                 //AddPage.Content = new AddTravel
             }
         }

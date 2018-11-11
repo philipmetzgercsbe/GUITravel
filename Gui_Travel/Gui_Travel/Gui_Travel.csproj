@@ -80,6 +80,9 @@
     <Compile Include="CustomControls\AddHotel.xaml.cs">
       <DependentUpon>AddHotel.xaml</DependentUpon>
     </Compile>
+    <Compile Include="CustomControls\AddTravel.xaml.cs">
+      <DependentUpon>AddTravel.xaml</DependentUpon>
+    </Compile>
     <Compile Include="CustomControls\adminControl.xaml.cs">
       <DependentUpon>adminControl.xaml</DependentUpon>
     </Compile>
@@ -125,6 +128,10 @@
       <DependentUpon>GUITravel.tt</DependentUpon>
     </Compile>
     <Page Include="CustomControls\AddHotel.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="CustomControls\AddTravel.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

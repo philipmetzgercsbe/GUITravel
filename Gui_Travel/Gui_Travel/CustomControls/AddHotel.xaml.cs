@@ -1,17 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using System.Text.RegularExpressions;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
 using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
+using Gui_Travel.ClassRepository;
 
 namespace Gui_Travel.CustomControls
 {
@@ -20,9 +14,11 @@ namespace Gui_Travel.CustomControls
     /// </summary>
     public partial class AddHotel : UserControl
     {
+        public Page ParentPage = adminControl.AddPage;
         public AddHotel()
         {
             InitializeComponent();
+            
         }
 
         private void LoadImagefromSource(object sender, RoutedEventArgs e)
@@ -57,6 +53,32 @@ namespace Gui_Travel.CustomControls
 
             return source;
 
+        }
+
+        private static readonly Regex _regex = new Regex("[^0-9.-]+"); //regex that matches disallowed text
+        private static bool IsTextAllowed(string text)
+        {
+            return !_regex.IsMatch(text);
+        }
+
+        private new void PreviewTextInput(object sender, TextCompositionEventArgs e)
+        {
+            e.Handled = !IsTextAllowed(e.Text);
+        }
+
+
+        private void SaveHotel(object sender, RoutedEventArgs e)
+        {
+            M120Entities m120Entities = new M120Entities();
+            List<Land> countriesList = m120Entities.Lands.ToList();
+            HotelRepository hotelRepository = new HotelRepository();
+            HotelImageRepository imageRepository = new HotelImageRepository();
+            hotelRepository.addHotel(hotelNametxtbox.Text,hotelPlacetxtbox.Text,countriesList.Find(x=> x.Name == hotelCountrycombobox.SelectedValue).Name, Int16.Parse(hotelRatingtxtbox.Text),hotelManagertxtbox.Text,Int16.Parse(hotelAmountofRoomstxtbox.Text),Int16.Parse(hotelPricePerDaytxtbox.Text),hotelPhonetxtbox.Text,hotelEmailtxtbox.Text,hotelWebtxtbox.Text,imageRepository.SaveImageToByte(HotelImage), ImageDescription.Text);
+        }
+
+        private void Close(object sender, RoutedEventArgs e)
+        {
+            ParentPage.Equals(null);
         }
     }
 }
